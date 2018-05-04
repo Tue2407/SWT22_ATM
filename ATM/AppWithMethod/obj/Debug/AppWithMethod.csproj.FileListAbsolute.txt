@@ -1,0 +1,9 @@
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\bin\Debug\AppWithMethod.exe.config
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\bin\Debug\AppWithMethod.exe
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\bin\Debug\AppWithMethod.pdb
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\bin\Debug\ATMClasses.dll
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\bin\Debug\TransponderReceiver.dll
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\bin\Debug\ATMClasses.pdb
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CoreCompileInputs.cache
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\obj\Debug\AppWithMethod.exe
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\obj\Debug\AppWithMethod.pdb
