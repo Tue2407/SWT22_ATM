@@ -40,7 +40,7 @@ namespace ATMClasses.Decoding
             }
         }
 
-        private TrackData Convert(string data)
+        public TrackData Convert(string data)
         {
             TrackData track = new TrackData();
             var words = data.Split(';');

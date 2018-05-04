@@ -1,4 +1,6 @@
-﻿namespace ATMClasses.Interfaces
+﻿using System;
+
+namespace ATMClasses.Interfaces
 {
     public interface ITracks
     {
@@ -8,5 +10,6 @@
         int Altitude { get; set; }
         int Velocity { get; set; }
         int Course { get; set; }
+        DateTime Timestamp { get; set; }
     }
 }

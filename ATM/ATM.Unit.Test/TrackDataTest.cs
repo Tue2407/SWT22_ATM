@@ -17,9 +17,10 @@ namespace ATM.Unit.Test
         private int _xcoord;
         private int _ycoord;
         private int _altitude;
+        private DateTime _timestamp = DateTime.ParseExact("20151014123456789", "yyyyMMddHHmmssfff", 
+            System.Globalization.CultureInfo.InvariantCulture);
         private int _course { get; set; }
         private int _velocity { get; set; }
-       
 
         [SetUp]
         public void Setup()
@@ -31,18 +32,22 @@ namespace ATM.Unit.Test
             _altitude = 12000;
             _course = 0;
             _velocity = 0;
-            //Test
+                //Test
             _uut = new TrackData();
         }
 
         private void Action()
         {
+            
+            //Handlingen, tænk på det kommer fra en liste data fra eventet af, bliver splittet og ud kommer det her
             _uut.Tag = _tag;
             _uut.X = _xcoord;
             _uut.Y = _ycoord;
             _uut.Altitude = _altitude;
             _uut.Velocity = _velocity;
             _uut.Course = _course;
+            _uut.Timestamp = _timestamp;
+           
         }
 
         [Test]
@@ -68,6 +73,12 @@ namespace ATM.Unit.Test
         {
             Action();
             Assert.That(_uut.Altitude, Is.EqualTo(12000));
+        }
+        [Test]
+        public void Track_Timestamp()
+        {
+            Action();
+            Assert.That(_uut.Timestamp, Is.EqualTo(_timestamp));
         }
         [Test]
         public void Track_Velocity()

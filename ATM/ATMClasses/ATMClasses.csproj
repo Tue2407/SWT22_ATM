@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Render\" />
+    <Folder Include="TrackUpdate\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
