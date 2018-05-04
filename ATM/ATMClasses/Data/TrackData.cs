@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//Test1
+//Lavet af Frank
 namespace ATMClasses.Data
 {
     public class TrackData
@@ -28,10 +28,10 @@ namespace ATMClasses.Data
             Timestamp = DateTime.MinValue;
         }
 
-
+        //Redigeret af mig
         public override string ToString()
         {
-            var str = $"{Tag}: ({X}, {Y}) ALT: {Altitude}, VEL: {Velocity}, CRS: {Course}";
+            var str = $"{Tag}: CoordX: {X}, CoordY: {Y} ALT: {Altitude}, VEL: {Velocity}, CRS: {Course}";
             return str;
         }
     }
