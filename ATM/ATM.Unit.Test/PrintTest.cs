@@ -22,14 +22,14 @@ namespace ATM.Unit.Test
             _output = Substitute.For<IOutput>();
             _tracks = new List<TrackData>();
             _track = Substitute.For<TrackData>();
-            _uut = new Print(_tracks);
+            _uut = new Print(_output, _tracks);
         }
-        public void Action(string tag ,int x, int y, int z)
+        public void Action(string tag)
         {
             _track.Tag = tag;
-            _track.X = x;
-            _track.Y = y;
-            _track.Altitude = z;
+            //_track.X = x;
+            //_track.Y = y;
+            //_track.Altitude = z;
 
             _tracks.Add(_track);
 
@@ -37,22 +37,21 @@ namespace ATM.Unit.Test
            
         }
 
-        //[TestCase("TRK001", 10000, 10000, 500)]
-        //[TestCase("TRK001", 90000, 90000, 500)]
-        //[TestCase("TRK001", 10000, 10000, 20000)]
-        //[TestCase("TRK001", 90000, 90000, 20000)]
-        [Test]
-        public void Print_Contains()
+        [TestCase("TRK001")]
+        [TestCase("TRK002")]
+        [TestCase("TRK003")]
+        [TestCase("TRK004")]
+        public void Print_Contains(string tag)
         {
-            string tag = "TRK";
-            int x = 10;
-            int y = 200;
-            int alt = 50;
-            Action(tag, x, y, alt);
-            _uut = new Print(_tracks);
+            //string tag = "TRK";
+            //int x = 10;
+            //int y = 200;
+            //int alt = 50;
+            Action(tag);
             _uut.Printing(_tracks);
-            Console.WriteLine(_track.Tag);
-            _output.Received().OutputLine(Arg.Is<string>(track => _track.Tag.Contains("TRK")));
+            
+            //_output.Received().OutputLine(_uut.ToString());
+            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains(_track.Tag)));
         }
     }
 }

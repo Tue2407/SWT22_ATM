@@ -19,12 +19,13 @@ namespace AppWithEvent
         static void Main(string[] args)
         {
             //Tilføjet printer til output
-            IPrints Printer;
+            IOutput Output = new Output();
+            Print Printer;
             ITransponderReceiver transponderDataReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
             var decoder = new DecodingWithEvent(transponderDataReceiver);
 
-            decoder.TrackDataReady += (o, trackArgs) => Printer = new Print(trackArgs.TrackData);
+            decoder.TrackDataReady += (o, trackArgs) => Printer = new Print(Output,trackArgs.TrackData);
 
             System.Console.ReadLine();
         }
