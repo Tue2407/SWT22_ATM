@@ -2,6 +2,6 @@
 {
     public interface IMonitors
     {
-        
+        bool InView { get; set; }
     }
 }

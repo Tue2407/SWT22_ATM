@@ -54,7 +54,6 @@ namespace ATM.Unit.Test
             Action(x, y, alt);
             Assert.AreEqual(_uut.InView, view);
         }
-
-
+        
     }
 }

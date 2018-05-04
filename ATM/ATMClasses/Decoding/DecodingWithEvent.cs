@@ -31,8 +31,8 @@ namespace ATMClasses.Decoding
                 trackList.Add(Convert(data));
             }
 
-            //Hvis tracklisten har 2 tracks
-            if (trackList.Count != 1)
+            //Hvis tracklisten har 1 track, skal nok laves om til 2 tracks
+            if (trackList.Count != 0)
             {
                 var handler = TrackDataReady;
                 //Hvis at handler eventet har hævet flaget
