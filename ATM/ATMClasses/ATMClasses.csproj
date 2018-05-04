@@ -46,10 +46,17 @@
     <Compile Include="Data\TrackData.cs" />
     <Compile Include="Decoding\DecodingWithEvent.cs" />
     <Compile Include="Decoding\DecodingWithMethod.cs" />
+    <Compile Include="Filtering\Monitor.cs" />
+    <Compile Include="Interfaces\IMonitors.cs" />
+    <Compile Include="Interfaces\IPrints.cs" />
     <Compile Include="Interfaces\ITrackDecoding.cs" />
     <Compile Include="Interfaces\ITrackReceiver.cs" />
+    <Compile Include="Interfaces\ITracks.cs" />
+    <Compile Include="Output\Print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Render\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

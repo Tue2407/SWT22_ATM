@@ -12,8 +12,9 @@ namespace ATMClasses.Decoding
     public class DecodingWithEvent : ITrackDecoding
     {
         private List<TrackData> trackList;
-        public event EventHandler<TrackDataEventArgs> TrackDataReady;
+        public event EventHandler<TrackDataEventArgs> TrackDataReady; //Eventet
 
+        //Subscribe til handleren
         public DecodingWithEvent(ITransponderReceiver rawReceiver)
         {
             rawReceiver.TransponderDataReady += OnRawData;
@@ -24,15 +25,17 @@ namespace ATMClasses.Decoding
         public void OnRawData(object o, RawTransponderDataEventArgs args)
         {
             trackList.Clear();
-
+            //Deep copy
             foreach (var data in args.TransponderData)
             {
                 trackList.Add(Convert(data));
             }
 
-            if (trackList.Count != 0)
+            //Hvis tracklisten har 2 tracks
+            if (trackList.Count != 1)
             {
                 var handler = TrackDataReady;
+                //Hvis at handler eventet har hævet flaget
                 handler?.Invoke(this, new TrackDataEventArgs(trackList));
             }
         }

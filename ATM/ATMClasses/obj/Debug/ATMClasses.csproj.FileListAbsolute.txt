@@ -5,3 +5,10 @@ C:\Users\DPH\source\repos\SWT22_ATM2\ATM\ATMClasses\obj\Debug\ATMClasses.csprojR
 C:\Users\DPH\source\repos\SWT22_ATM2\ATM\ATMClasses\obj\Debug\ATMClasses.csproj.CoreCompileInputs.cache
 C:\Users\DPH\source\repos\SWT22_ATM2\ATM\ATMClasses\obj\Debug\ATMClasses.dll
 C:\Users\DPH\source\repos\SWT22_ATM2\ATM\ATMClasses\obj\Debug\ATMClasses.pdb
+C:\Users\DPH\Source\Repos\SWT22_ATM4\ATM\ATMClasses\bin\Debug\ATMClasses.dll
+C:\Users\DPH\Source\Repos\SWT22_ATM4\ATM\ATMClasses\bin\Debug\ATMClasses.pdb
+C:\Users\DPH\Source\Repos\SWT22_ATM4\ATM\ATMClasses\bin\Debug\TransponderReceiver.dll
+C:\Users\DPH\Source\Repos\SWT22_ATM4\ATM\ATMClasses\obj\Debug\ATMClasses.csprojResolveAssemblyReference.cache
+C:\Users\DPH\Source\Repos\SWT22_ATM4\ATM\ATMClasses\obj\Debug\ATMClasses.csproj.CoreCompileInputs.cache
+C:\Users\DPH\Source\Repos\SWT22_ATM4\ATM\ATMClasses\obj\Debug\ATMClasses.dll
+C:\Users\DPH\Source\Repos\SWT22_ATM4\ATM\ATMClasses\obj\Debug\ATMClasses.pdb
