@@ -11,16 +11,21 @@ namespace AppWithMethod
 {
     class TrackDataReceiver : ITrackReceiver
     {
-        
+        //Denne ting køre igennem tracks og "printer" dem ud
         public void ReceiveTracks(List<TrackData> tracks)
         {
             foreach (var track in tracks)
             {
                 //Tilsat filtering
                 IMonitors monitor = new Monitor(track);
-                if (monitor.InView == true)
-                System.Console.WriteLine(track);
-                
+                if (monitor.InView == false)
+                {
+                    System.Console.WriteLine(track);
+                }
+                else
+                {
+                    System.Console.WriteLine("Nothing");
+                }
             }
         }
     }

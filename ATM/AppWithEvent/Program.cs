@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ATMClasses.Data;
 using ATMClasses.Decoding;
+using ATMClasses.Filtering;
+using ATMClasses.Interfaces;
 using TransponderReceiver;
 
 namespace AppWithEvent
@@ -25,9 +27,20 @@ namespace AppWithEvent
 
         private static void PrintTracks(List<TrackData> tracks)
         {
+            
             foreach (var track in tracks)
             {
-                System.Console.WriteLine(track);                
+                //Tilsat filtering
+                IMonitors monitor = new Monitor(track);
+                if (monitor.InView == true)
+                {
+                    System.Console.WriteLine(track);
+                }
+                else
+                {
+                   
+                }
+
             }
         }
     }
