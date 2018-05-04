@@ -8,26 +8,29 @@ using ATMClasses.Data;
 using ATMClasses.Decoding;
 using ATMClasses.Filtering;
 using ATMClasses.Interfaces;
+using ATMClasses.Output;
 using TransponderReceiver;
 
 namespace AppWithEvent
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
+            //Tilføjet printer til output
+            IPrints Printer;
             ITransponderReceiver transponderDataReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
             var decoder = new DecodingWithEvent(transponderDataReceiver);
 
-            decoder.TrackDataReady += (o, trackArgs) => PrintTracks(trackArgs.TrackData);
+            decoder.TrackDataReady += (o, trackArgs) => Printer = new Print(trackArgs.TrackData);
 
             System.Console.ReadLine();
         }
 
         private static void PrintTracks(List<TrackData> tracks)
         {
-            
             foreach (var track in tracks)
             {
                 //Tilsat filtering

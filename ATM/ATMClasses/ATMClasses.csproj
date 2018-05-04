@@ -48,10 +48,12 @@
     <Compile Include="Decoding\DecodingWithMethod.cs" />
     <Compile Include="Filtering\Monitor.cs" />
     <Compile Include="Interfaces\IMonitors.cs" />
+    <Compile Include="Interfaces\IOutput.cs" />
     <Compile Include="Interfaces\IPrints.cs" />
     <Compile Include="Interfaces\ITrackDecoding.cs" />
     <Compile Include="Interfaces\ITrackReceiver.cs" />
     <Compile Include="Interfaces\ITracks.cs" />
+    <Compile Include="Output\Output.cs" />
     <Compile Include="Output\Print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
