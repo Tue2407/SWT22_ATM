@@ -16,16 +16,16 @@ namespace AppWithMethod
         {
             foreach (var track in tracks)
             {
+                System.Console.WriteLine(track);
                 //Tilsat filtering
-                IMonitors monitor = new Monitor(track);
-                if (monitor.InView == false)
-                {
-                    System.Console.WriteLine(track);
-                }
-                else
-                {
-                    System.Console.WriteLine("Nothing");
-                }
+                //if (monitor.MonitorFlight(track) == false)
+                //{
+                //    System.Console.WriteLine(track);
+                //}
+                //else
+                //{
+                //    System.Console.WriteLine("Nothing");
+                //}
             }
         }
     }

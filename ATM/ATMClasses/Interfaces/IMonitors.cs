@@ -1,7 +1,12 @@
-﻿namespace ATMClasses.Interfaces
+﻿using System.Collections.Generic;
+
+namespace ATMClasses.Interfaces
 {
     public interface IMonitors
     {
-        bool InView { get; set; }
+        //ITracks Track { get; set; }
+        //bool InView { get; set; }
+        List<ITracks> Track { get; set; }
+        bool MonitorFlight(ITracks track);
     }
 }

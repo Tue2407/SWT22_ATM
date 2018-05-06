@@ -12,20 +12,24 @@ namespace ATM.Unit.Test
     public class PrintTest
     {
         private Print _uut;
-        private List<TrackData> _tracks;
-        private TrackData _track;
+        private List<ITracks> _tracks;
+        private ITracks _track;
         private IOutput _output;
+        private IMonitors _monitor;
 
         [SetUp]
         public void Setup()
         {
             _output = Substitute.For<IOutput>();
-            _tracks = new List<TrackData>();
+            _tracks = new List<ITracks>();
             _track = Substitute.For<TrackData>();
-            _uut = new Print(_output, _tracks);
+            _monitor = Substitute.For<IMonitors>();
+            _uut = new Print(_monitor,_output, _tracks);
+
         }
         public void Action(string tag)
         {
+            //_monitor.InView.Returns(true);
             _track.Tag = tag;
             //_track.X = x;
             //_track.Y = y;
@@ -48,7 +52,7 @@ namespace ATM.Unit.Test
             //int y = 200;
             //int alt = 50;
             Action(tag);
-            _uut.Printing(_tracks);
+            _uut.Printing(_tracks,_monitor);
             
             //_output.Received().OutputLine(_uut.ToString());
             _output.Received().OutputLine(Arg.Is<string>(str => str.Contains(_track.Tag)));

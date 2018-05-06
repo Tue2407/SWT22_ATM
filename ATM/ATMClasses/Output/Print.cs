@@ -13,19 +13,20 @@ namespace ATMClasses.Output
         //{
         //    _myOutput = output;
         //}
-        public Print(IOutput output,List<TrackData> tracks)
+        public Print(IMonitors monitor, IOutput output,List<ITracks> tracks)
         {
             _myOutput = output;
-            Printing(tracks);
+            Printing(tracks, monitor);
         }
-        public void Printing(List<TrackData> tracks)
+        public void Printing(List<ITracks> tracks, IMonitors monitor)
         {
-            foreach (var track in tracks)
+            monitor.Track = tracks;
+
+            foreach (var track in monitor.Track)
             {
                 //Tilsat filtering
 
-                IMonitors monitor = new Monitor(track);
-                if (monitor.InView == true)
+                if (monitor.MonitorFlight(track))
                 {
                     _myOutput.OutputLine($"Tag: {track.Tag}");
                     _myOutput.OutputLine($"XCoord: {track.X}");

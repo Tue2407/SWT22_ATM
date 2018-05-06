@@ -19,7 +19,7 @@ namespace ATM.Unit.Test
         {
             _track = new TrackData();
 
-            _uut = new Monitor(_track);
+            _uut = new Monitor();
         }
 
         public void Action(int x, int y, int z)
@@ -28,7 +28,7 @@ namespace ATM.Unit.Test
             _track.Y = y;
             _track.Altitude = z;
             
-            _uut.InView = _uut.MonitorFlight(_track);
+            _uut.MonitorFlight(_track);
         }
 
         [TestCase(10000, 10000, 500, true)]
@@ -38,7 +38,7 @@ namespace ATM.Unit.Test
         public void Track_Is_In_Range(int x, int y, int alt, bool view)
         {
             Action(x, y , alt);
-            Assert.AreEqual(_uut.InView, view);
+            Assert.AreEqual(_uut.MonitorFlight(_track), view);
         }
 
         [TestCase(10000, 10000, 499, false)]
@@ -52,7 +52,7 @@ namespace ATM.Unit.Test
         public void Track_Is_Out_Of_Range(int x, int y, int alt, bool view)
         {
             Action(x, y, alt);
-            Assert.AreEqual(_uut.InView, view);
+            Assert.AreEqual(_uut.MonitorFlight(_track), view);
         }
         
     }

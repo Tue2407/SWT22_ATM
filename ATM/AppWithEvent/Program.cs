@@ -21,22 +21,23 @@ namespace AppWithEvent
             //Tilføjet printer til output
             IOutput Output = new Output();
             Print Printer;
+            IMonitors monitor = new Monitor();
             ITransponderReceiver transponderDataReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
             var decoder = new DecodingWithEvent(transponderDataReceiver);
 
-            decoder.TrackDataReady += (o, trackArgs) => Printer = new Print(Output,trackArgs.TrackData);
+            decoder.TrackDataReady += (o, trackArgs) => Printer = new Print(monitor,Output,trackArgs.TrackData);
 
             System.Console.ReadLine();
         }
 
-        private static void PrintTracks(List<TrackData> tracks)
+        private static void PrintTracks(List<ITracks> tracks)
         {
             foreach (var track in tracks)
             {
                 //Tilsat filtering
-                IMonitors monitor = new Monitor(track);
-                if (monitor.InView == true)
+                IMonitors monitor = new Monitor();
+                if (monitor.MonitorFlight(track) == true)
                 {
                     System.Console.WriteLine(track);
                 }

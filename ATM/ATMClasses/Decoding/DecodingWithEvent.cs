@@ -11,7 +11,7 @@ namespace ATMClasses.Decoding
 {
     public class DecodingWithEvent : ITrackDecoding
     {
-        private List<TrackData> trackList;
+        private List<ITracks> trackList;
         public event EventHandler<TrackDataEventArgs> TrackDataReady; //Eventet
 
         //Subscribe til handleren
@@ -19,7 +19,7 @@ namespace ATMClasses.Decoding
         {
             rawReceiver.TransponderDataReady += OnRawData;
 
-            trackList = new List<TrackData>();
+            trackList = new List<ITracks>();
         }
 
         public void OnRawData(object o, RawTransponderDataEventArgs args)
