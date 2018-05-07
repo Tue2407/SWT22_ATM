@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ATMClasses.Data;
 using ATMClasses.Filtering;
 using ATMClasses.Interfaces;
@@ -13,22 +14,31 @@ namespace ATM.Unit.Test
     {
         private ITracks _track;
         private Monitor _uut;
+        private List<ITracks> _list;
+        private IPrints _printer;
         
+
         [SetUp]
         public void Setup()
         {
-            _track = new TrackData();
-
+            _track = Substitute.For<TrackData>();
+            _list = new List<ITracks>();
+            _printer = Substitute.For<IPrints>();
             _uut = new Monitor();
+
         }
 
         public void Action(int x, int y, int z)
         {
+            _list.Add(_track);
+            _uut.Track = _list;
+            
             _track.X = x;
             _track.Y = y;
             _track.Altitude = z;
-            
+            //_uut.Track.Add(_track);
             _uut.MonitorFlight(_track);
+            
         }
 
         [TestCase(10000, 10000, 500, true)]
@@ -54,6 +64,19 @@ namespace ATM.Unit.Test
             Action(x, y, alt);
             Assert.AreEqual(_uut.MonitorFlight(_track), view);
         }
-        
+        [TestCase(90000, 90000, 20000)]
+        public void Track_Get_In_List(int x, int y, int alt)
+        {
+            Action(x, y, alt);
+            
+            Assert.AreEqual(_uut.Track.Count, 1);
+        }
+        [TestCase(90000, 90000, 20000)]
+        public void Track_Set_In_List(int x, int y, int alt)
+        {
+            Action(x, y, alt);
+
+            Assert.AreEqual(_uut.Track.Count, 1);
+        }
     }
 }

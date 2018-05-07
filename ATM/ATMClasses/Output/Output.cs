@@ -7,6 +7,7 @@ namespace ATMClasses.Output
     {
         public void OutputLine(string line)
         {
+
             Console.WriteLine(line);
         }
     }

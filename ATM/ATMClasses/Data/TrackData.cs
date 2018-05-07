@@ -30,10 +30,10 @@ namespace ATMClasses.Data
         }
 
         //Redigeret af Somedude120
-        public override string ToString()
-        {
-            var str = $"{Tag}: CoordX: {X}, CoordY: {Y} ALT: {Altitude}, VEL: {Velocity}, CRS: {Course}";
-            return str;
-        }
+        //public override string ToString()
+        //{
+        //    var str = $"{Tag}: CoordX: {X}, CoordY: {Y} ALT: {Altitude}, VEL: {Velocity}, CRS: {Course}";
+        //    return str;
+        //}
     }
 }
