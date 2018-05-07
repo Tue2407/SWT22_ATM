@@ -21,6 +21,7 @@ namespace ATM.Unit.Test
             System.Globalization.CultureInfo.InvariantCulture);
         private int _course { get; set; }
         private int _velocity { get; set; }
+        private string _formattedtime;
 
         [SetUp]
         public void Setup()
@@ -32,6 +33,7 @@ namespace ATM.Unit.Test
             _altitude = 12000;
             _course = 0;
             _velocity = 0;
+            _formattedtime = "20151014123456789";
                 //Test
             _uut = new TrackData();
         }
@@ -47,7 +49,8 @@ namespace ATM.Unit.Test
             _uut.Velocity = _velocity;
             _uut.Course = _course;
             _uut.Timestamp = _timestamp;
-           
+            _uut.FormattedTimestamp = _formattedtime;
+
         }
 
         [Test]
@@ -79,6 +82,12 @@ namespace ATM.Unit.Test
         {
             Action();
             Assert.That(_uut.Timestamp, Is.EqualTo(_timestamp));
+        }
+        [Test]
+        public void Track_Formatted_Timestamp()
+        {
+            Action();
+            Assert.That(_uut.FormattedTimestamp, Is.EqualTo(_formattedtime));
         }
         [Test]
         public void Track_Velocity()
