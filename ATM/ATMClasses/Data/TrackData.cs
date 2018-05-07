@@ -16,8 +16,10 @@ namespace ATMClasses.Data
         public int Altitude { get; set; }
         public int Velocity { get; set; }
         public int Course { get; set; }
+        public string FormattedTimestamp { get; set; }
 
         public DateTime Timestamp { get; set; }
+
 
         public TrackData()
         {

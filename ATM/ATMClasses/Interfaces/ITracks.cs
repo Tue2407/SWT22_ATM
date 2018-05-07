@@ -11,5 +11,6 @@ namespace ATMClasses.Interfaces
         int Velocity { get; set; }
         int Course { get; set; }
         DateTime Timestamp { get; set; }
+        string FormattedTimestamp { get; set; }
     }
 }
