@@ -25,7 +25,6 @@ namespace ATMClasses.Output
             foreach (var track in monitor.Track)
             {
                 //Tilsat filtering
-
                 if (monitor.MonitorFlight(track))
                 {
                     _myOutput.OutputLine($"Tag: {track.Tag}");

@@ -80,8 +80,40 @@ namespace ATM.Unit.Test
 
             _output.Received().OutputLine(Arg.Is<string>(str => str.Contains(_track.Y.ToString())));
         }
+        [TestCase("TRK001", 3000, 4000, 5000)]
+        [TestCase("TRK002", 3000, 4000, 5000)]
+        [TestCase("TRK003", 3000, 4000, 5000)]
+        [TestCase("TRK004", 3000, 4000, 5000)]
+        public void Print_Contains_Velocity(string tag, int x, int y, int z)
+        {
 
+            Action(tag, x, y, z);
+            _uut.Printing(_tracks, _monitor);
 
+            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains(_track.Velocity.ToString())));
+        }
+        [TestCase("TRK001", 3000, 4000, 5000)]
+        [TestCase("TRK002", 3000, 4000, 5000)]
+        [TestCase("TRK003", 3000, 4000, 5000)]
+        [TestCase("TRK004", 3000, 4000, 5000)]
+        public void Print_Contains_Course(string tag, int x, int y, int z)
+        {
+
+            Action(tag, x, y, z);
+            _uut.Printing(_tracks, _monitor);
+
+            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains(_track.Course.ToString())));
+        }
+
+        [TestCase("TRK004", 3000, 4000, 5000)]
+        public void No_Call_From_Output(string tag, int x, int y, int z)
+        {
+            Action(tag, x, y , z);
+            _monitor.MonitorFlight(_track).Returns(false);
+            _uut.Printing(_tracks, _monitor);
+            
+            //Den skal ikke modtage noget received output pga. monitor er nu false
+        }
 
 
     }
