@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ATMClasses.Interfaces;
+//Objektificering af TrackData
+//Lavet af Frank
 namespace ATMClasses.Data
 {
-    public class TrackData
+    public class TrackData : ITracks
     {
         public string Tag { get; set; }
         public int X { get; set; }
@@ -27,10 +29,10 @@ namespace ATMClasses.Data
             Timestamp = DateTime.MinValue;
         }
 
-
+        //Redigeret af Somedude120
         public override string ToString()
         {
-            var str = $"{Tag}: ({X}, {Y}) ALT: {Altitude}, VEL: {Velocity}, CRS: {Course}";
+            var str = $"{Tag}: CoordX: {X}, CoordY: {Y} ALT: {Altitude}, VEL: {Velocity}, CRS: {Course}";
             return str;
         }
     }

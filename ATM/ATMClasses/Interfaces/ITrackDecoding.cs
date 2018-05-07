@@ -9,8 +9,8 @@ namespace ATMClasses.Interfaces
 {
     public class TrackDataEventArgs : EventArgs
     {
-        public List<TrackData> TrackData { get;  }
-        public TrackDataEventArgs(List<TrackData> trackData)
+        public List<ITracks> TrackData { get;  }
+        public TrackDataEventArgs(List<ITracks> trackData)
         {
             TrackData = trackData;
         }

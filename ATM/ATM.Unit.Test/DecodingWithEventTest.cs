@@ -20,7 +20,7 @@ namespace ATM.Unit.Test
         private ITransponderReceiver _receiver;
         private RawTransponderDataEventArgs _fakeTransponderData;
 
-        private List<TrackData> receivedTrackData;
+        private List<ITracks> receivedTrackData;
         [SetUp]
         public void Setup()
         {

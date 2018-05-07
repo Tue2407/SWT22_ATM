@@ -11,33 +11,36 @@ namespace ATMClasses.Decoding
 {
     public class DecodingWithEvent : ITrackDecoding
     {
-        private List<TrackData> trackList;
-        public event EventHandler<TrackDataEventArgs> TrackDataReady;
+        private List<ITracks> trackList;
+        public event EventHandler<TrackDataEventArgs> TrackDataReady; //Eventet
 
+        //Subscribe til handleren
         public DecodingWithEvent(ITransponderReceiver rawReceiver)
         {
             rawReceiver.TransponderDataReady += OnRawData;
 
-            trackList = new List<TrackData>();
+            trackList = new List<ITracks>();
         }
 
         public void OnRawData(object o, RawTransponderDataEventArgs args)
         {
             trackList.Clear();
-
+            //Deep copy
             foreach (var data in args.TransponderData)
             {
                 trackList.Add(Convert(data));
             }
 
+            //Hvis tracklisten har 1 track, skal nok laves om til 2 tracks
             if (trackList.Count != 0)
             {
                 var handler = TrackDataReady;
+                //Hvis at handler eventet har hævet flaget
                 handler?.Invoke(this, new TrackDataEventArgs(trackList));
             }
         }
 
-        private TrackData Convert(string data)
+        public TrackData Convert(string data)
         {
             TrackData track = new TrackData();
             var words = data.Split(';');
