@@ -14,6 +14,7 @@ namespace ATMClasses.Decoding
     {
         private List<ITracks> trackList;
         public event EventHandler<TrackDataEventArgs> TrackDataReady; //Eventet
+        public event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation; //Eventet til to
 
         //Subscribe til handleren
         public DecodingWithEvent(ITransponderReceiver rawReceiver)
@@ -36,6 +37,12 @@ namespace ATMClasses.Decoding
             if (trackList.Count != 0)
             {
                 var handler = TrackDataReady;
+                //Hvis at handler eventet har hævet flaget
+                handler?.Invoke(this, new TrackDataEventArgs(trackList));
+            }
+            if (trackList.Count != 1)
+            {
+                var handler = TrackDataReadyForCalculation;
                 //Hvis at handler eventet har hævet flaget
                 handler?.Invoke(this, new TrackDataEventArgs(trackList));
             }
