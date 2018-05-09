@@ -17,7 +17,7 @@ namespace ATMClasses.Filtering
 
         public bool MonitorFlight(ITracks track)
         {
-            //De rette koords
+            //De rette coords
             return track.X <= 90000
                    && track.X >= 10000
                    && track.Y <= 90000
