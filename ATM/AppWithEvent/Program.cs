@@ -10,7 +10,7 @@ using ATMClasses.Filtering;
 using ATMClasses.Interfaces;
 using ATMClasses.Output;
 using TransponderReceiver;
-
+//Denne solution bruger vi
 namespace AppWithEvent
 {
     class Program

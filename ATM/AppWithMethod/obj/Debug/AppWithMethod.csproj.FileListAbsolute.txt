@@ -27,3 +27,14 @@ C:\Users\DPH\Source\Repos\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.cs
 C:\Users\DPH\Source\Repos\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CoreCompileInputs.cache
 C:\Users\DPH\Source\Repos\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.exe
 C:\Users\DPH\Source\Repos\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.pdb
+D:\Skole\SWTHandin\ATM\AppWithMethod\bin\Debug\AppWithMethod.exe.config
+D:\Skole\SWTHandin\ATM\AppWithMethod\bin\Debug\AppWithMethod.exe
+D:\Skole\SWTHandin\ATM\AppWithMethod\bin\Debug\AppWithMethod.pdb
+D:\Skole\SWTHandin\ATM\AppWithMethod\bin\Debug\ATMClasses.dll
+D:\Skole\SWTHandin\ATM\AppWithMethod\bin\Debug\TransponderReceiver.dll
+D:\Skole\SWTHandin\ATM\AppWithMethod\bin\Debug\ATMClasses.pdb
+D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.csprojResolveAssemblyReference.cache
+D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CoreCompileInputs.cache
+D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CopyComplete
+D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.exe
+D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.pdb
