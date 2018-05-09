@@ -9,6 +9,7 @@ using ATMClasses.Decoding;
 using ATMClasses.Filtering;
 using ATMClasses.Interfaces;
 using ATMClasses.Output;
+using ATMClasses.TrackUpdate;
 using TransponderReceiver;
 //Denne solution bruger vi
 namespace AppWithEvent
@@ -23,9 +24,11 @@ namespace AppWithEvent
             Print Printer;
             IMonitors monitor = new Monitor();
             ITransponderReceiver transponderDataReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+            IUpdate update;
 
             var decoder = new DecodingWithEvent(transponderDataReceiver);
-
+            //Kaldet bliver lagt her til eventet. Som en slags subscriber.
+            update = new Update(decoder);
             decoder.TrackDataReady += (o, trackArgs) => Printer = new Print(monitor,Output,trackArgs.TrackData);
 
             System.Console.ReadLine();

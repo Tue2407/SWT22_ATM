@@ -8,13 +8,7 @@ namespace ATMClasses.Filtering
     public class Monitor : IMonitors
     {
         public List<ITracks> Track { get; set; }
-        //public bool InView { get; set; }
-        //public Monitor()
-        //{
-        //    InView = false;
-        //    //InView = MonitorFlight(Track);
-        //}
-
+        
         public bool MonitorFlight(ITracks track)
         {
             //De rette coords
