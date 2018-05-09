@@ -2,7 +2,7 @@
 <AnalyseParams>
   <TargetExecutable>C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe</TargetExecutable>
   <TargetArguments>ATM.Unit.Test\bin\Debug\ATM.Unit.Test.dll --result:TestResult.xml</TargetArguments>
-  <TargetWorkingDir>ATM</TargetWorkingDir>
+  <TargetWorkingDir>ATM\ATM.Unit.Test</TargetWorkingDir>
   <TempDir><!-- Directory for the auxiliary files. Set to system temp by default. --></TempDir>
   <Output>coverage_report.html</Output>
   <ReportType>HTML<!-- [HTML|JSON|XML|NDependXML]. A type of the report. XML by default. --></ReportType>
