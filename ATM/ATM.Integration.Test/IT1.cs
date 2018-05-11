@@ -16,5 +16,17 @@ namespace ATM.Integration.Test
         // Buttom-up. 
 
         // Husk at include de nødvendige pakker, til Nsubstitute og NUnit.
+
+        [SetUp]
+        public void SetUp()
+        {
+            //SetUp
+        }
+
+        [Test]
+        public void ThisIsATest()
+        {
+            //Template Test Case. 
+        }
     }
 }
