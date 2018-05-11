@@ -8,20 +8,21 @@ namespace ATMClasses.TrackUpdate
 {
     public class Update : IUpdate
     {
-        private List<ITracks> TrackData { get; } 
+        public List<ITracks> Tracklist { get; set; }
         public Update(ITrackDecoding arg)
         {
             arg.TrackDataReadyForCalculation += ArgOnTrackDataReadyForCalculation;
         }
 
-        public Update(List<ITracks> trackData)
-        {
-            TrackData = trackData;
-        }
-
         private void ArgOnTrackDataReadyForCalculation(object sender, TrackDataEventArgs trackDataEventArgs)
         {
-            Console.WriteLine("Two stuff is here now");
+            Tracklist = new List<ITracks>();
+            Tracklist = trackDataEventArgs.TrackData;
+            foreach (var track in Tracklist)
+            {
+                Console.WriteLine($"ArgOnTrackDataReadyForCalculation: {track.Tag}");
+            }
+            
         }
 
 
