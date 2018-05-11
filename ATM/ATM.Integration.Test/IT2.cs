@@ -10,8 +10,11 @@ using NUnit.Framework;
 
 namespace ATM.Integration.Test
 {
+    [TestFixture]
     class IT2
     {
         // Buttom-Up
+
+        // Husk at include de nødvendige pakker, til Nsubstitute og NUnit.
     }
 }

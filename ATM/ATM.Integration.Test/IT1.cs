@@ -14,5 +14,7 @@ namespace ATM.Integration.Test
     public class IT1
     {
         // Buttom-up. 
+
+        // Husk at include de nødvendige pakker, til Nsubstitute og NUnit.
     }
 }
