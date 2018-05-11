@@ -10,6 +10,7 @@ using NUnit.Framework;
 
 namespace ATM.Integration.Test
 {
+    [TestFixture]
     public class IT1
     {
         // Buttom-up. 
