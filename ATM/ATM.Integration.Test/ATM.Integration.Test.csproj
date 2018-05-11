@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="IT2.cs" />
     <Compile Include="IT1.cs" />
+    <Compile Include="IT3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
