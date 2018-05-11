@@ -17,6 +17,8 @@ namespace ATM.Integration.Test
 
         // Husk at include de nødvendige pakker, til Nsubstitute og NUnit.
 
+        // Interface SetUp goes here. 
+
         [SetUp]
         public void SetUp()
         {
