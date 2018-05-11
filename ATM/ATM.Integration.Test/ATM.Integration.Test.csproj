@@ -44,5 +44,11 @@
     <Compile Include="IT1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ATMClasses\ATMClasses.csproj">
+      <Project>{e95ddf21-0a6d-4bf1-9bc3-0ea4029924e9}</Project>
+      <Name>ATMClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
