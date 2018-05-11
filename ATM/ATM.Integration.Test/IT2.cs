@@ -13,7 +13,7 @@ namespace ATM.Integration.Test
     [TestFixture]
     class IT2
     {
-        // Buttom-Up
+        // Bottom-Up
 
         // Husk at include de nødvendige pakker, til Nsubstitute og NUnit.
 
