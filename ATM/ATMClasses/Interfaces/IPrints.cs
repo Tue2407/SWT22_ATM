@@ -2,6 +2,6 @@
 {
     public interface IPrints
     {
-        ICalcVelocity Calculator { get; set; }
+        ICalcVelocity CalcVel { get; set; }
     }
 }

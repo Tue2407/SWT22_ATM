@@ -25,13 +25,14 @@ namespace AppWithEvent
             IMonitors monitor = new Monitor();
             ITransponderReceiver transponderDataReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
             IUpdate update;
-            ICalcVelocity calculator = new CalcVelocity();;
+            ICalcVelocity calcVelocity = new CalcVelocity();;
+            ICalcCourse calcCourse = new CalcCourse();
 
             var decoder = new DecodingWithEvent(transponderDataReceiver);
             //Kaldet bliver lagt her til eventet. Som en slags subscriber.
             update = new Update(decoder);
             //decoder.TrackDataReady += (o, trackArgs) => Printer = new Print(update,calculator,monitor,Output,trackArgs.TrackData);
-            decoder.TrackDataReadyForCalculation += (o, trackArgs) => Printer = new Print(update, calculator, monitor, Output, trackArgs.TrackData);
+            decoder.TrackDataReadyForCalculation += (o, trackArgs) => Printer = new Print(update, calcCourse, calcVelocity, monitor, Output, trackArgs.TrackData);
 
             System.Console.ReadLine();
         }

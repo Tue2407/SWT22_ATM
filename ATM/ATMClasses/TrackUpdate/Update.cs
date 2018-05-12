@@ -10,7 +10,8 @@ namespace ATMClasses.TrackUpdate
     public class Update : IUpdate
     {
         private List<ITracks> CurrentList;
-        public ICalcVelocity Calculator { get; set; }
+        public ICalcVelocity Velocity { get; set; }
+        public ICalcCourse Course { get; set; }
        
         public List<ITracks> OldTracklist { get; set; }
         public Update(ITrackDecoding arg)
@@ -34,14 +35,18 @@ namespace ATMClasses.TrackUpdate
                         {
                             //Så skal den lave noget
                             
+                            //Hastighed
                             double timespan = Convert.ToDouble(track.Timestamp.Second - oldtrack.Timestamp.Second);
-                            track.Velocity = Convert.ToInt32(Calculator.Velocity(oldtrack.X, track.X, oldtrack.Y, track.Y, timespan));
-                            
+                            track.Velocity = Convert.ToInt32(Velocity.Velocity(oldtrack.X, track.X, oldtrack.Y, track.Y, timespan));
+
+                            //Kursen
+                            track.Course = Convert.ToInt32(Course.Calculate(oldtrack.X, track.X, oldtrack.Y, track.Y));
+
                             CurrentList.Clear();
                             CurrentList.Add(track);
 
                             Console.WriteLine($"ArgOnTrackDataReadyForCalculation: {track.Tag}");
-                            Console.WriteLine($"ArgOnTrackDataReadyForCalculation: X1: {oldtrack.X}, X2: {track.X}, Y1: {oldtrack.Y}, Y2: {track.Y}, Timespan: {timespan}, Vel: {track.Velocity}");
+                            Console.WriteLine($"ArgOnTrackDataReadyForCalculation: X1: {oldtrack.X}, X2: {track.X}, Y1: {oldtrack.Y}, Y2: {track.Y}, Timespan: {timespan}, Vel: {track.Velocity}, {track.Course}");
                         }
                     }
                     OldTracklist.Clear();
@@ -61,14 +66,15 @@ namespace ATMClasses.TrackUpdate
         }
 
         //Skal initialisere Calc udefra plus tilføje velocity til listen!
-        public void TrackCalculated(ICalcVelocity calc, List<ITracks> list)
+        public void TrackCalculated(ICalcCourse course , ICalcVelocity vel, List<ITracks> list)
         {
             list.Clear();
             foreach (var track in CurrentList)
             {
                  list.Add(track);
             }
-            Calculator = calc;
+            Velocity = vel;
+            Course = course;
         }
         public event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation;
     }

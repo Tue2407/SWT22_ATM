@@ -10,27 +10,29 @@ namespace ATMClasses.Output
     {
         private IOutput _myOutput;
 
-        public ICalcVelocity Calculator { get; set; }
+        public ICalcVelocity CalcVel { get; set; }
+        public ICalcCourse CalcCourse { get; set; }
 
         private IUpdate _Update;
         //public Print(IOutput output)
         //{
         //    _myOutput = output;
         //}
-        public Print(IUpdate update , ICalcVelocity calculator ,IMonitors monitor, IOutput output,List<ITracks> tracks)
+        public Print(IUpdate update , ICalcCourse calcCourse, ICalcVelocity calcVel ,IMonitors monitor, IOutput output,List<ITracks> tracks)
         {
             _Update = update;
-            Calculator = calculator;
+            CalcVel = calcVel;
+            CalcCourse = calcCourse;
             _myOutput = output;
             Printing(tracks, monitor);
         }
         public void Printing(List<ITracks> tracks, IMonitors monitor)
         {
             monitor.Track = tracks;
-            _Update.TrackCalculated(Calculator, tracks);
+            _Update.TrackCalculated(CalcCourse, CalcVel, tracks);
             foreach (var track in monitor.Track)
             {
-                //_Update.TrackCalculated(Calculator, tracks);
+                //_Update.TrackCalculated(Velocity, tracks);
                 //Tilsat filtering
                 if (monitor.MonitorFlight(track))
                 {
