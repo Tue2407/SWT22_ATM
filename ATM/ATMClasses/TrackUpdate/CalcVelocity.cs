@@ -3,7 +3,7 @@ using ATMClasses.Interfaces;
 
 namespace ATMClasses.TrackUpdate
 {
-    public class CalcVelocity : ICalculation
+    public class CalcVelocity : ICalcVelocity
     {
         public double Velocity(double x1, double x2, double y1, double y2, double time)
         {
@@ -38,11 +38,6 @@ namespace ATMClasses.TrackUpdate
             { speed = c / time; }
 
             return speed;
-        }
-        public string Result(string result)
-        {
-            
-            return result;
         }
     }
 }

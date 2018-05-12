@@ -14,7 +14,7 @@ namespace ATM.Unit.Test
         private ITrackDecoding _decoder;
         private TrackDataEventArgs _fakeTransponderData;
         private IUpdate _uut;
-        private ICalculation _calculator;
+        private ICalcVelocity _calculator;
 
         private List<ITracks> receivedTrackData;
         [SetUp]
@@ -23,7 +23,7 @@ namespace ATM.Unit.Test
             _decoder = Substitute.For<ITrackDecoding>();
             receivedTrackData = new List<ITracks>();
             _uut = new Update(_decoder);
-            _calculator = Substitute.For<ICalculation>();
+            _calculator = Substitute.For<ICalcVelocity>();
             //Tilsæt ny data
             _fakeTransponderData = new TrackDataEventArgs(new List<ITracks>());
             _fakeTransponderData.TrackData.Add(Substitute.For<ITracks>());
@@ -82,5 +82,6 @@ namespace ATM.Unit.Test
             
             Assert.That(receivedTrackData.Count, Is.EqualTo(0));
         }
+
     }
 }

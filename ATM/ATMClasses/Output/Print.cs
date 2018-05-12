@@ -10,14 +10,14 @@ namespace ATMClasses.Output
     {
         private IOutput _myOutput;
 
-        public ICalculation Calculator { get; set; }
+        public ICalcVelocity Calculator { get; set; }
 
         private IUpdate _Update;
         //public Print(IOutput output)
         //{
         //    _myOutput = output;
         //}
-        public Print(IUpdate update , ICalculation calculator ,IMonitors monitor, IOutput output,List<ITracks> tracks)
+        public Print(IUpdate update , ICalcVelocity calculator ,IMonitors monitor, IOutput output,List<ITracks> tracks)
         {
             _Update = update;
             Calculator = calculator;

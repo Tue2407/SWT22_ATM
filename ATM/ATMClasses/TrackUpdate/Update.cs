@@ -10,7 +10,7 @@ namespace ATMClasses.TrackUpdate
     public class Update : IUpdate
     {
         private List<ITracks> CurrentList;
-        public ICalculation Calculator { get; set; }
+        public ICalcVelocity Calculator { get; set; }
        
         public List<ITracks> OldTracklist { get; set; }
         public Update(ITrackDecoding arg)
@@ -61,7 +61,7 @@ namespace ATMClasses.TrackUpdate
         }
 
         //Skal initialisere Calc udefra plus tilføje velocity til listen!
-        public void TrackCalculated(ICalculation calc, List<ITracks> list)
+        public void TrackCalculated(ICalcVelocity calc, List<ITracks> list)
         {
             list.Clear();
             foreach (var track in CurrentList)

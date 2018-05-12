@@ -25,7 +25,7 @@ namespace AppWithEvent
             IMonitors monitor = new Monitor();
             ITransponderReceiver transponderDataReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
             IUpdate update;
-            ICalculation calculator = new CalcVelocity();;
+            ICalcVelocity calculator = new CalcVelocity();;
 
             var decoder = new DecodingWithEvent(transponderDataReceiver);
             //Kaldet bliver lagt her til eventet. Som en slags subscriber.

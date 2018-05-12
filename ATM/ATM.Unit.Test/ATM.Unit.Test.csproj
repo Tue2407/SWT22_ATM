@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseTest.cs" />
     <Compile Include="DecodingWithEventTest.cs" />
     <Compile Include="DecodingWithMethodTest.cs" />
     <Compile Include="MonitorTest.cs" />
