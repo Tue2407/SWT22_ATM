@@ -14,6 +14,7 @@ namespace ATM.Unit.Test
         private ITrackDecoding _decoder;
         private TrackDataEventArgs _fakeTransponderData;
         private IUpdate _uut;
+        private ICalculation _calculator;
 
         private List<ITracks> receivedTrackData;
         [SetUp]
@@ -46,6 +47,14 @@ namespace ATM.Unit.Test
             RaiseFakeEvent();
             
             Assert.That(receivedTrackData.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Two_Different_List()
+        {
+            RaiseFakeEvent();
+            _uut.TrackCalculated(_calculator,receivedTrackData);
+            Assert.That(_calculator,Is.EqualTo(_calculator));
         }
     }
 }
