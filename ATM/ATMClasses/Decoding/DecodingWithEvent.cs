@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ATMClasses.Data;
 using ATMClasses.Interfaces;
+using ATMClasses.TrackUpdate;
 using TransponderReceiver;
 
 namespace ATMClasses.Decoding
@@ -28,6 +29,7 @@ namespace ATMClasses.Decoding
         {
             trackList.Clear();
             //Deep copy
+
             foreach (var data in args.TransponderData)
             {
                 trackList.Add(Convert(data));
@@ -39,12 +41,14 @@ namespace ATMClasses.Decoding
                 var handler = TrackDataReady;
                 //Hvis at handler eventet har hævet flaget
                 handler?.Invoke(this, new TrackDataEventArgs(trackList));
+
             }
-            if (trackList.Count != 1)
+            if (trackList.Count != 0)
             {
                 var handler = TrackDataReadyForCalculation;
                 //Hvis at handler eventet har hævet flaget
                 handler?.Invoke(this, new TrackDataEventArgs(trackList));
+
             }
         }
 

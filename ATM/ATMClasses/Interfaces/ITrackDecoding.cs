@@ -13,6 +13,11 @@ namespace ATMClasses.Interfaces
         public TrackDataEventArgs(List<ITracks> trackData)
         {
             TrackData = trackData;
+            //foreach (var track in trackData)
+            //{
+            //    Console.WriteLine($"TrackDataEventArgs: {track.Tag}");
+            //}
+            
         }
     }
 

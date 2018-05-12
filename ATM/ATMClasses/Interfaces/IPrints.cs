@@ -2,6 +2,6 @@
 {
     public interface IPrints
     {
-        
+        ICalculation Calculator { get; set; }
     }
 }

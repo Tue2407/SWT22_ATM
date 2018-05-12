@@ -19,6 +19,7 @@ namespace ATM.Unit.Test
         private ITrackDecoding _uut;
         private ITransponderReceiver _receiver;
         private RawTransponderDataEventArgs _fakeTransponderData;
+        private RawTransponderDataEventArgs _fakeTransponderData2;
 
         private List<ITracks> receivedTrackData;
         [SetUp]
@@ -29,6 +30,7 @@ namespace ATM.Unit.Test
 
             _fakeTransponderData = new RawTransponderDataEventArgs(new List<string>()
                 { "TRK001;12345;67890;12000;20151014123456789" }
+
             );
 
             // Make a fake subscriber to the event in UUT
@@ -41,6 +43,7 @@ namespace ATM.Unit.Test
             // Raise an event on the transponder receiver to spark decoding
             _receiver.TransponderDataReady += Raise.EventWith(_fakeTransponderData);
         }
+
 
         [Test]
         public void Decoding_OneTrackDataInList_CountIsCorrect()
@@ -123,6 +126,13 @@ namespace ATM.Unit.Test
             Assert.That(receivedTrackData[0].Timestamp.Millisecond, Is.EqualTo(789));
         }
 
+        [Test]
+        public void Decoding_TwoTrackDatasInList_CountIsCorrect()
+        {
+            _fakeTransponderData.TransponderData.Add("TRK002;12345;67890;12000;20151014123456789");
+            RaiseFakeEvent();
+            Assert.That(receivedTrackData.Count, Is.EqualTo(2));
+        }
 
         [Test]
         public void Decoding_ThreeTrackDatasInList_CountIsCorrect()
