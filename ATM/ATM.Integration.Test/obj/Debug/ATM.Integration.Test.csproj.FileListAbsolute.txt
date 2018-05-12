@@ -1,0 +1,17 @@
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\ATM.Integration.Test.dll
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\ATM.Integration.Test.pdb
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\ATMClasses.dll
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\Castle.Core.dll
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\NSubstitute.dll
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\nunit.framework.dll
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\TransponderReceiver.dll
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\ATMClasses.pdb
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\nunit.framework.pdb
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\nunit.framework.xml
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.csprojResolveAssemblyReference.cache
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.csproj.CoreCompileInputs.cache
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.csproj.CopyComplete
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.dll
+D:\Skole\SWTHandin\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.pdb

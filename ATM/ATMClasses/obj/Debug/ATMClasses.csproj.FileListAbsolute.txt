@@ -26,3 +26,4 @@ D:\Skole\SWTHandin\ATM\ATMClasses\obj\Debug\ATMClasses.csproj.CoreCompileInputs.
 D:\Skole\SWTHandin\ATM\ATMClasses\obj\Debug\ATMClasses.csproj.CopyComplete
 D:\Skole\SWTHandin\ATM\ATMClasses\obj\Debug\ATMClasses.dll
 D:\Skole\SWTHandin\ATM\ATMClasses\obj\Debug\ATMClasses.pdb
+D:\Skole\SWTHandin\ATM\ATMClasses\obj\Debug\ATMClasses.csprojResolveAssemblyReference.cache

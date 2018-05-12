@@ -5,8 +5,8 @@ namespace ATMClasses.Interfaces
 {
     public interface IUpdate
     {
-        ICalculation Calculator { get; set; }
-        void TrackCalculated(ICalculation calc, List<ITracks> list);
+        ICalcVelocity Calculator { get; set; }
+        void TrackCalculated(ICalcVelocity calc, List<ITracks> list);
         event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation;
     }
 }

@@ -11,7 +11,7 @@ namespace ATM.Unit.Test
     [TestFixture]
     public class VelocityTest
     {
-        private ICalculation _uut;
+        private ICalcVelocity _uut;
         private double TO1, TO2, timespan;
         private List<ITracks> tracklist;
 

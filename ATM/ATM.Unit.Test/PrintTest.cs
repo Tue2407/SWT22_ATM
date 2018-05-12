@@ -17,13 +17,13 @@ namespace ATM.Unit.Test
         private ITracks _track;
         private IOutput _output;
         private IMonitors _monitor;
-        private ICalculation _calculation;
+        private ICalcVelocity _calculation;
         private IUpdate _update;
 
         [SetUp]
         public void Setup()
         {
-            _calculation = Substitute.For<ICalculation>();
+            _calculation = Substitute.For<ICalcVelocity>();
             _update = Substitute.For<IUpdate>();
             _output = Substitute.For<IOutput>();
             _tracks = new List<ITracks>();
