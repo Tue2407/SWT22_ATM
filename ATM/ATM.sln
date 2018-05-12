@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATMClasses", "ATMClasses\ATMClasses.csproj", "{E95DDF21-0A6D-4BF1-9BC3-0EA4029924E9}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWithMethod", "AppWithMethod\AppWithMethod.csproj", "{D04A77C7-A0AD-4D0D-8301-F3B67B703AEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWithEvent", "AppWithEvent\AppWithEvent.csproj", "{4F61A755-3F71-4E20-93EA-1BADDDBE268B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM.Integration.Test", "ATM.Integration.Test\ATM.Integration.Test.csproj", "{0CB665E0-C50C-4525-903F-5B0C2EFE8F98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4F61A755-3F71-4E20-93EA-1BADDDBE268B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F61A755-3F71-4E20-93EA-1BADDDBE268B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F61A755-3F71-4E20-93EA-1BADDDBE268B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CB665E0-C50C-4525-903F-5B0C2EFE8F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB665E0-C50C-4525-903F-5B0C2EFE8F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB665E0-C50C-4525-903F-5B0C2EFE8F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB665E0-C50C-4525-903F-5B0C2EFE8F98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
