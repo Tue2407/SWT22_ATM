@@ -5,6 +5,7 @@ using ATMClasses.Data;
 using ATMClasses.Decoding;
 using ATMClasses.Interfaces;
 using ATMClasses.Proximity_Detection;
+using ATMClasses.Render;
 
 namespace ATMClasses.TrackUpdate
 {
@@ -16,6 +17,7 @@ namespace ATMClasses.TrackUpdate
         public ISeparation Separation { get; set; }
         public ICalcVelocity Velocity { get; set; }
         public ICalcCourse Course { get; set; }
+        public ICalcDistance Distance { get; set; }
        
         public List<ITracks> OldTracklist { get; set; }
         public Update(ITrackDecoding arg)
@@ -55,7 +57,8 @@ namespace ATMClasses.TrackUpdate
                         //Separationseventet
                         else
                         {
-                            if (Separation.CollisionDetection(track,oldtrack))
+                            
+                            if (Separation.CollisionDetection(Distance,track,oldtrack))
                             {
                                 Logger.LogSeparationEvent(track, oldtrack);
                             }
@@ -77,14 +80,16 @@ namespace ATMClasses.TrackUpdate
 
         }
 
-        //Skal initialisere Calc udefra plus tilføje velocity til listen!
-        public void TrackCalculated(ICalcCourse course , ICalcVelocity vel, ILog logger, ISeparation separation, List<ITracks> list)
+        //Skal initialisere Calc udefra plus tilføje alt til listen!
+        public void TrackCalculated(ICalcDistance distance ,ICalcCourse course, ICalcVelocity vel, ILog logger, ISeparation separation, List<ITracks> list)
         {
             list.Clear();
             foreach (var track in CurrentList)
             {
                  list.Add(track);
             }
+
+            Distance = distance;
             Velocity = vel;
             Course = course;
             Logger = logger;
