@@ -17,19 +17,21 @@ namespace ATM.Unit.Test
         private ITracks _track;
         private IOutput _output;
         private IMonitors _monitor;
-        private ICalcVelocity _calculation;
+        private ICalcVelocity _calcvelocity;
+        private ICalcCourse _calccourse;
         private IUpdate _update;
 
         [SetUp]
         public void Setup()
         {
-            _calculation = Substitute.For<ICalcVelocity>();
+            _calccourse = Substitute.For<ICalcCourse>();
+            _calcvelocity = Substitute.For<ICalcVelocity>();
             _update = Substitute.For<IUpdate>();
             _output = Substitute.For<IOutput>();
             _tracks = new List<ITracks>();
             _track = Substitute.For<TrackData>();
             _monitor = Substitute.For<IMonitors>();
-            _uut = new Print(_update,_calculation,_monitor,_output, _tracks);
+            _uut = new Print(_update,_calccourse,_calcvelocity,_monitor,_output, _tracks);
 
         }
         public void Action(string tag, int x, int y, int z)

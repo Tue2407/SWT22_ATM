@@ -13,7 +13,7 @@ namespace ATM.Unit.Test
         public void Setup()
         {
 
-            _uut = new CalcCourse(_x1, _x2, _y1, _y2);
+            _uut = new CalcCourse();
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace ATM.Unit.Test
             _x2 = 2;
             _y1 = 0;
             _y2 = 0;
-            _uut = new CalcCourse(_x1, _x2, _y1, _y2);
+            _uut.Calculate(_x1, _x2, _y1, _y2);
             Assert.AreEqual(_uut._Angle, 90);
 
         }
@@ -63,7 +63,7 @@ namespace ATM.Unit.Test
             _x2 = 1;
             _y1 = 2;
             _y2 = 2;
-            _uut = new CalcCourse(_x1, _x2, _y1, _y2);
+            _uut.Calculate(_x1, _x2, _y1, _y2);
             Assert.AreEqual(_uut._Angle, 270);
         }
         [Test]
@@ -73,7 +73,7 @@ namespace ATM.Unit.Test
             _x2 = 2;
             _y1 = 2;
             _y2 = 0;
-            _uut = new CalcCourse(_x1, _x2, _y1, _y2);
+            _uut.Calculate(_x1, _x2, _y1, _y2);
             Assert.AreEqual(_uut._Angle, 180);
         }
         [Test]
@@ -83,7 +83,7 @@ namespace ATM.Unit.Test
             _x2 = 2;
             _y1 = 0;
             _y2 = 2;
-            _uut = new CalcCourse(_x1, _x2, _y1, _y2);
+            _uut.Calculate(_x1, _x2, _y1, _y2);
             Assert.AreEqual(_uut._Angle, 360);
         }
     }
