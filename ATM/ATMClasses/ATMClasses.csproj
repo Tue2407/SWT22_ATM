@@ -47,19 +47,22 @@
     <Compile Include="Decoding\DecodingWithEvent.cs" />
     <Compile Include="Decoding\DecodingWithMethod.cs" />
     <Compile Include="Filtering\Monitor.cs" />
+    <Compile Include="Interfaces\ICalculation.cs" />
     <Compile Include="Interfaces\IMonitors.cs" />
     <Compile Include="Interfaces\IOutput.cs" />
     <Compile Include="Interfaces\IPrints.cs" />
     <Compile Include="Interfaces\ITrackDecoding.cs" />
     <Compile Include="Interfaces\ITrackReceiver.cs" />
     <Compile Include="Interfaces\ITracks.cs" />
+    <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Output\Output.cs" />
     <Compile Include="Output\Print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrackUpdate\CalcVelocity.cs" />
+    <Compile Include="TrackUpdate\Update.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Render\" />
-    <Folder Include="TrackUpdate\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
