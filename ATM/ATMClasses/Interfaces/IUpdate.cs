@@ -9,7 +9,10 @@ namespace ATMClasses.Interfaces
         ISeparation Separation { get; set; }
         ICalcVelocity Velocity { get; set; }
         ICalcCourse Course { get; set; }
-        void TrackCalculated(ICalcCourse course, ICalcVelocity vel, ILog logger, ISeparation separation, List<ITracks> list);
+        ICalcDistance Distance { get; set; }
+
+        void TrackCalculated(ICalcDistance distance, ICalcCourse course, ICalcVelocity vel, ILog logger,
+            ISeparation separation, List<ITracks> list);
         event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation;
     }
 }

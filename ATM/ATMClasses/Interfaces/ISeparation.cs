@@ -2,6 +2,6 @@
 {
     public interface ISeparation
     {
-       bool CollisionDetection(ITracks track1, ITracks track2);
+       bool CollisionDetection(ICalcDistance Distance, ITracks track1, ITracks track2);
     }
 }

@@ -10,6 +10,7 @@ namespace ATMClasses.Output
     {
         private IOutput _myOutput;
 
+        public ICalcDistance CalcDist{ get; set; }
         public ICalcVelocity CalcVel { get; set; }
         public ICalcCourse CalcCourse { get; set; }
         public ILog Logger { get; set; }
@@ -20,9 +21,10 @@ namespace ATMClasses.Output
         //{
         //    _myOutput = output;
         //}
-        public Print(IUpdate update, ICalcCourse calcCourse, ICalcVelocity calcVel, ILog logger, ISeparation separation, IMonitors monitor, IOutput output,List<ITracks> tracks)
+        public Print(IUpdate update,ICalcDistance calcDist , ICalcCourse calcCourse, ICalcVelocity calcVel, ILog logger, ISeparation separation, IMonitors monitor, IOutput output,List<ITracks> tracks)
         {
             _Update = update;
+            CalcDist = calcDist;
             CalcVel = calcVel;
             CalcCourse = calcCourse;
             Logger = logger;
@@ -33,7 +35,7 @@ namespace ATMClasses.Output
         public void Printing(List<ITracks> tracks, IMonitors monitor)
         {
             monitor.Track = tracks;
-            _Update.TrackCalculated(CalcCourse, CalcVel,Logger, Separation, tracks);
+            _Update.TrackCalculated(CalcDist, CalcCourse, CalcVel,Logger, Separation, tracks);
             foreach (var track in monitor.Track)
             {
                 //_Update.TrackCalculated(Velocity, tracks);
