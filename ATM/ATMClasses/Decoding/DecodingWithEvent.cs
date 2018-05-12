@@ -43,7 +43,7 @@ namespace ATMClasses.Decoding
                 handler?.Invoke(this, new TrackDataEventArgs(trackList));
                 
             }
-            if (trackList.Count == 2)
+            if (trackList.Count != 0)
             {
                 var handler = TrackDataReadyForCalculation;
                 //Hvis at handler eventet har hævet flaget
