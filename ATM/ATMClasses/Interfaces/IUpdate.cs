@@ -5,9 +5,11 @@ namespace ATMClasses.Interfaces
 {
     public interface IUpdate
     {
+        ILog Logger { get; set; }
+        ISeparation Separation { get; set; }
         ICalcVelocity Velocity { get; set; }
         ICalcCourse Course { get; set; }
-        void TrackCalculated(ICalcCourse course, ICalcVelocity calc, List<ITracks> list);
+        void TrackCalculated(ICalcCourse course, ICalcVelocity vel, ILog logger, ISeparation separation, List<ITracks> list);
         event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation;
     }
 }

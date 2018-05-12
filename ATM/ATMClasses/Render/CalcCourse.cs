@@ -1,7 +1,7 @@
 ﻿using System;
 using ATMClasses.Interfaces;
 
-namespace ATMClasses.TrackUpdate
+namespace ATMClasses.Render
 {
     public class CalcCourse : ICalcCourse
     {

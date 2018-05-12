@@ -20,6 +20,8 @@ namespace ATM.Unit.Test
         private ICalcVelocity _calcvelocity;
         private ICalcCourse _calccourse;
         private IUpdate _update;
+        private ILog _logger;
+        private ISeparation _separation;
 
         [SetUp]
         public void Setup()
@@ -31,7 +33,7 @@ namespace ATM.Unit.Test
             _tracks = new List<ITracks>();
             _track = Substitute.For<TrackData>();
             _monitor = Substitute.For<IMonitors>();
-            _uut = new Print(_update,_calccourse,_calcvelocity,_monitor,_output, _tracks);
+            _uut = new Print(_update,_calccourse,_calcvelocity, _logger, _separation,_monitor,_output, _tracks);
 
         }
         public void Action(string tag, int x, int y, int z)
