@@ -60,6 +60,7 @@ namespace ATMClasses.TrackUpdate
 
         }
 
+        //Skal initialisere Calc udefra plus tilføje velocity til listen!
         public void TrackCalculated(ICalculation calc, List<ITracks> list)
         {
             list.Clear();

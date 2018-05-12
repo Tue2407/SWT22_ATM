@@ -23,7 +23,7 @@ namespace ATM.Unit.Test
             _decoder = Substitute.For<ITrackDecoding>();
             receivedTrackData = new List<ITracks>();
             _uut = new Update(_decoder);
-
+            _calculator = Substitute.For<ICalculation>();
             //Tilsæt ny data
             _fakeTransponderData = new TrackDataEventArgs(new List<ITracks>());
             _fakeTransponderData.TrackData.Add(Substitute.For<ITracks>());
@@ -48,13 +48,39 @@ namespace ATM.Unit.Test
             
             Assert.That(receivedTrackData.Count, Is.EqualTo(2));
         }
+        [Test]
+        public void Raised_Event_If_Three_Tracks_Appeared()
+        {
+            _fakeTransponderData.TrackData.Add(Substitute.For<ITracks>());
+            RaiseFakeEvent();
+
+            Assert.That(receivedTrackData.Count, Is.EqualTo(3));
+        }
 
         [Test]
-        public void Two_Different_List()
+        public void Calculator_Gets_Initialized()
         {
             RaiseFakeEvent();
             _uut.TrackCalculated(_calculator,receivedTrackData);
             Assert.That(_calculator,Is.EqualTo(_calculator));
+        }
+
+        [TestCase(1000,30000,1000,2000)]
+        public void Calculator_Get_Initialized_From_Public(int x1, int x2, int y1, int y2)
+        {
+            RaiseFakeEvent();
+            _uut.TrackCalculated(_calculator,receivedTrackData);
+            double timespan = x2 - x1;
+            Assert.AreEqual(_uut.Calculator.Velocity(x1, x2, y1, y2, timespan), 0);
+        }
+        //Den skal ændre til det nye med velocity som er opdateret på
+        [Test]
+        public void Update_ReInitializes_List_It_Receives()
+        {
+            RaiseFakeEvent();
+            _uut.TrackCalculated(_calculator, receivedTrackData);
+            
+            Assert.That(receivedTrackData.Count, Is.EqualTo(0));
         }
     }
 }
