@@ -9,6 +9,8 @@ using ATMClasses.Decoding;
 using ATMClasses.Filtering;
 using ATMClasses.Interfaces;
 using ATMClasses.Output;
+using ATMClasses.Proximity_Detection;
+using ATMClasses.Render;
 using ATMClasses.TrackUpdate;
 using TransponderReceiver;
 //Denne solution bruger vi
@@ -27,12 +29,14 @@ namespace AppWithEvent
             IUpdate update;
             ICalcVelocity calcVelocity = new CalcVelocity();;
             ICalcCourse calcCourse = new CalcCourse();
+            ILog logger = new Logger();
+            ISeparation separation = new SeparationEvent();
 
             var decoder = new DecodingWithEvent(transponderDataReceiver);
             //Kaldet bliver lagt her til eventet. Som en slags subscriber.
             update = new Update(decoder);
             //decoder.TrackDataReady += (o, trackArgs) => Printer = new Print(update,calculator,monitor,Output,trackArgs.TrackData);
-            decoder.TrackDataReadyForCalculation += (o, trackArgs) => Printer = new Print(update, calcCourse, calcVelocity, monitor, Output, trackArgs.TrackData);
+            decoder.TrackDataReadyForCalculation += (o, trackArgs) => Printer = new Print(update, calcCourse, calcVelocity, logger, separation, monitor, Output, trackArgs.TrackData);
 
             System.Console.ReadLine();
         }

@@ -4,12 +4,16 @@ using System.Linq;
 using ATMClasses.Data;
 using ATMClasses.Decoding;
 using ATMClasses.Interfaces;
+using ATMClasses.Proximity_Detection;
 
 namespace ATMClasses.TrackUpdate
 {
     public class Update : IUpdate
     {
+       
         private List<ITracks> CurrentList;
+        public ILog Logger { get; set; }
+        public ISeparation Separation { get; set; }
         public ICalcVelocity Velocity { get; set; }
         public ICalcCourse Course { get; set; }
        
@@ -45,8 +49,16 @@ namespace ATMClasses.TrackUpdate
                             CurrentList.Clear();
                             CurrentList.Add(track);
 
-                            Console.WriteLine($"ArgOnTrackDataReadyForCalculation: {track.Tag}");
-                            Console.WriteLine($"ArgOnTrackDataReadyForCalculation: X1: {oldtrack.X}, X2: {track.X}, Y1: {oldtrack.Y}, Y2: {track.Y}, Timespan: {timespan}, Vel: {track.Velocity}, {track.Course}");
+                            //Console.WriteLine($"ArgOnTrackDataReadyForCalculation: {track.Tag}");
+                            //Console.WriteLine($"ArgOnTrackDataReadyForCalculation: X1: {oldtrack.X}, X2: {track.X}, Y1: {oldtrack.Y}, Y2: {track.Y}, Timespan: {timespan}, Vel: {track.Velocity}, {track.Course}");
+                        }
+                        //Separationseventet
+                        else
+                        {
+                            if (Separation.CollisionDetection(track,oldtrack))
+                            {
+                                Logger.LogSeparationEvent(track, oldtrack);
+                            }
                         }
                     }
                     OldTracklist.Clear();
@@ -66,7 +78,7 @@ namespace ATMClasses.TrackUpdate
         }
 
         //Skal initialisere Calc udefra plus tilføje velocity til listen!
-        public void TrackCalculated(ICalcCourse course , ICalcVelocity vel, List<ITracks> list)
+        public void TrackCalculated(ICalcCourse course , ICalcVelocity vel, ILog logger, ISeparation separation, List<ITracks> list)
         {
             list.Clear();
             foreach (var track in CurrentList)
@@ -75,6 +87,8 @@ namespace ATMClasses.TrackUpdate
             }
             Velocity = vel;
             Course = course;
+            Logger = logger;
+            Separation = separation;
         }
         public event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation;
     }

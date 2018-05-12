@@ -12,24 +12,28 @@ namespace ATMClasses.Output
 
         public ICalcVelocity CalcVel { get; set; }
         public ICalcCourse CalcCourse { get; set; }
+        public ILog Logger { get; set; }
+        public ISeparation Separation { get; set; }
 
         private IUpdate _Update;
         //public Print(IOutput output)
         //{
         //    _myOutput = output;
         //}
-        public Print(IUpdate update , ICalcCourse calcCourse, ICalcVelocity calcVel ,IMonitors monitor, IOutput output,List<ITracks> tracks)
+        public Print(IUpdate update, ICalcCourse calcCourse, ICalcVelocity calcVel, ILog logger, ISeparation separation, IMonitors monitor, IOutput output,List<ITracks> tracks)
         {
             _Update = update;
             CalcVel = calcVel;
             CalcCourse = calcCourse;
+            Logger = logger;
+            Separation = separation;
             _myOutput = output;
             Printing(tracks, monitor);
         }
         public void Printing(List<ITracks> tracks, IMonitors monitor)
         {
             monitor.Track = tracks;
-            _Update.TrackCalculated(CalcCourse, CalcVel, tracks);
+            _Update.TrackCalculated(CalcCourse, CalcVel,Logger, Separation, tracks);
             foreach (var track in monitor.Track)
             {
                 //_Update.TrackCalculated(Velocity, tracks);

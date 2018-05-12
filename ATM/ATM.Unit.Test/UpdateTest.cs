@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ATMClasses.Decoding;
 using ATMClasses.Interfaces;
+using ATMClasses.Render;
 using ATMClasses.TrackUpdate;
 using NUnit.Framework;
 using NSubstitute;
@@ -16,6 +17,8 @@ namespace ATM.Unit.Test
         private IUpdate _uut;
         private ICalcVelocity _calcVelocity;
         private ICalcCourse _calcCourse;
+        private ILog _logger;
+        private ISeparation _separation;
 
         private List<ITracks> receivedTrackData;
         [SetUp]
@@ -26,6 +29,8 @@ namespace ATM.Unit.Test
             _uut = new Update(_decoder);
             _calcCourse = Substitute.For<ICalcCourse>();
             _calcVelocity = Substitute.For<ICalcVelocity>();
+            _logger = Substitute.For<ILog>();
+            _separation = Substitute.For<ISeparation>();
             //Tilsæt ny data
             _fakeTransponderData = new TrackDataEventArgs(new List<ITracks>());
             _fakeTransponderData.TrackData.Add(Substitute.For<ITracks>());
@@ -62,7 +67,7 @@ namespace ATM.Unit.Test
         public void Calculator_Gets_Initialized()
         {
             RaiseFakeEvent();
-            _uut.TrackCalculated(_calcCourse,_calcVelocity,receivedTrackData);
+            _uut.TrackCalculated(_calcCourse,_calcVelocity,_logger,_separation,receivedTrackData);
             Assert.That(_calcVelocity,Is.EqualTo(_calcVelocity));
         }
 
@@ -70,7 +75,7 @@ namespace ATM.Unit.Test
         public void CalcVelocity_Get_Initialized_From_Public(int x1, int x2, int y1, int y2)
         {
             RaiseFakeEvent();
-            _uut.TrackCalculated(_calcCourse, _calcVelocity, receivedTrackData);
+            _uut.TrackCalculated(_calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
             double timespan = x2 - x1;
             Assert.AreEqual(_uut.Velocity.Velocity(x1, x2, y1, y2, timespan), 0);
         }
@@ -79,7 +84,7 @@ namespace ATM.Unit.Test
         public void Update_ReInitializes_List_It_Receives()
         {
             RaiseFakeEvent();
-            _uut.TrackCalculated(_calcCourse, _calcVelocity, receivedTrackData);
+            _uut.TrackCalculated(_calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
 
             Assert.That(receivedTrackData.Count, Is.EqualTo(0));
         }
@@ -101,15 +106,26 @@ namespace ATM.Unit.Test
         public void CalcCourse_Get()
         {
             RaiseFakeEvent();
-            _uut.TrackCalculated(_calcCourse,_calcVelocity,receivedTrackData);
+            _uut.TrackCalculated(_calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
             Assert.AreEqual(_calcCourse, _calcCourse);
         }
         [TestCase(1000, 30000, 1000, 2000)]
         public void CalcCourse_Get_Initialized_From_Public(int x1, int x2, int y1, int y2)
         {
             RaiseFakeEvent();
-            _uut.TrackCalculated(_calcCourse, _calcVelocity, receivedTrackData);
+            _uut.TrackCalculated(_calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
             Assert.AreEqual(_uut.Course.Calculate(x1, x2, y1, y2), 0);
         }
+        //[TestCase(1000, 30000, 1000, 2000)]
+        //public void Calculated_Course_On_Track(int x1, int x2, int y1, int y2)
+        //{
+        //    RaiseFakeEvent();
+
+        //    //_uut.TrackCalculated(_calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
+        //    double control = _uut.Course.Calculate(x1, x2, y1, y2);
+
+        //    Assert.AreEqual(control, receivedTrackData[0].Course);
+        //}
+
     }
 }
