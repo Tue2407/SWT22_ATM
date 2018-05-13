@@ -22,19 +22,17 @@ namespace ATM.Unit.Test
         // Test-case For fly der flyver i et 1D plan.
 
         [TestCase(0, 0, 0)]
-        [TestCase(19000, 0, 19000)]
-        [TestCase(-30000, 0, 30000)]
-        [TestCase(0, 44333, 44333)]
-        [TestCase(0, -44332, 44332)]
-        [TestCase(10322, 23433, 13111)]
-        [TestCase(-30000, 90000, 120000)]
-        [TestCase(10322, 23433, 13111)]
-        [TestCase(-35000, -90000, 55000)]
+        [TestCase(10000, 0, 10000)]
+        [TestCase(-11000, 0, 11000)]
+        [TestCase(0, 12000, 12000)]
+        [TestCase(0, -13000, 13000)]
+        [TestCase(10000, 10000, 0)]
+        [TestCase(-11000, 10000, 21000)]
+        [TestCase(90000, -90000, 180000)]
+        [TestCase(-90000, 90000, 180000)]
         [TestCase(0, 90000, 90000)]
         [TestCase(90000, 0, 90000)]
         [TestCase(90000, 90000, 0)]
-        [TestCase(90000, -90000, 180000)]
-        [TestCase(-90000, 90000, 180000)]
 
         public void CalcDistance1D_returnsCorrect_Value(int a, int b, int value)
         {
