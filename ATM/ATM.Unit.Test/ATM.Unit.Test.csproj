@@ -62,6 +62,7 @@
     <Compile Include="CourseTest.cs" />
     <Compile Include="DecodingWithEventTest.cs" />
     <Compile Include="DecodingWithMethodTest.cs" />
+    <Compile Include="DistanceTest.cs" />
     <Compile Include="MonitorTest.cs" />
     <Compile Include="OutputTest.cs" />
     <Compile Include="PrintTest.cs" />
