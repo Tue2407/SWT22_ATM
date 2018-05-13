@@ -5,8 +5,10 @@
     "\\ATM\\AppWithEvent",
     "\\ATM\\AppWithEvent\\bin",
     "\\ATM\\AppWithEvent\\bin\\Debug",
-    "\\ATM\\ATMClasses\\Proximity Detection"
+    "\\ATM\\ATMClasses",
+    "\\ATM\\ATMClasses\\Proximity Detection",
+    "\\ATM\\ATMClasses\\TrackUpdate"
   ],
-  "SelectedNode": "\\ATM\\ATM.Unit.Test",
+  "SelectedNode": "\\ATM\\AppWithEvent\\bin\\Debug\\TransponderReceiver.dll",
   "PreviewInSolutionExplorer": false
 }

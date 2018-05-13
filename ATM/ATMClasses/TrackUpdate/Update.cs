@@ -17,14 +17,11 @@ namespace ATMClasses.TrackUpdate
         public ICalcVelocity Velocity { get; set; }
         public ICalcCourse Course { get; set; }
         public ICalcDistance Distance { get; set; }
-        public List<ITracks> OldTracklist { get; set; }
-        public List<ITracks> CurrentList { get; set; }
-        public List<ITracks> CompareList { get; set; }
+
+        public List<ITracks> OldTracklist { get; }
         
         public Update(ITrackDecoding arg)
         {
-            CompareList = new List<ITracks>();
-            CurrentList = new List<ITracks>();
             OldTracklist = new List<ITracks>();
             arg.TrackDataReadyForCalculation += ArgOnTrackDataReadyForCalculation;
         }
