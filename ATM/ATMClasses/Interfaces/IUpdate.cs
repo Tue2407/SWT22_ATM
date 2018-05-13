@@ -12,8 +12,8 @@ namespace ATMClasses.Interfaces
         ICalcDistance Distance { get; set; }
         List<ITracks> CompareList { get; set; }
 
-        void TrackCalculated(ICalcDistance distance, ICalcCourse course, ICalcVelocity vel, ILog logger,
-            ISeparation separation, List<ITracks> list);
+        void TrackCalculated(IMonitors monitor, ICalcDistance distance, ICalcCourse course, ICalcVelocity vel,
+            ILog logger, ISeparation separation, List<ITracks> list);
         event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation;
     }
 }
