@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using ATMClasses.Interfaces;
 
 namespace ATMClasses.Proximity_Detection
@@ -7,6 +8,9 @@ namespace ATMClasses.Proximity_Detection
     {
         public void LogSeparationEvent(ITracks track1, ITracks track2)
         {
+            Console.WriteLine("Timestamp: " + track1.FormattedTimestamp + "\t" +
+                              track1.Tag + " and " + track2.Tag + " are breaking separation rules");
+
             string output = "Timestamp: " + track1.FormattedTimestamp + "\t" +
                             track1.Tag + " and " + track2.Tag + " are breaking separation rules";
 
