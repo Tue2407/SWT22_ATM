@@ -42,9 +42,13 @@ namespace ATM.Unit.Test
         }
 
         [TestCase(0, 0, 0, 0, 0)]
+        [TestCase(20000, 0, 0, 0, 20000)]
+        [TestCase(0, 21000, 0, 0, 21000)]
+        [TestCase(0, 0, 22000, 0, 22000)]
+        [TestCase(0, 0, 0, 23000, 23000)]
         public void CalcDistance2D_returnsCorrect_Value(int x1, int y1, int x2, int y2, int value)
         {
-
+            Assert.AreEqual(value, _uut.CalculateDistance2D(x1, y1, x2, y2));
         }
     }
 }
