@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ATM",
+    "\\ATM\\AppWithEvent",
+    "\\ATM\\AppWithEvent\\bin",
+    "\\ATM\\AppWithEvent\\bin\\Debug",
+    "\\ATM\\ATMClasses\\Proximity Detection"
   ],
-  "SelectedNode": "\\ATM",
+  "SelectedNode": "\\ATM\\ATM.Unit.Test",
   "PreviewInSolutionExplorer": false
 }
