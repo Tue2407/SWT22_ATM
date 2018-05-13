@@ -9,21 +9,12 @@ namespace ATMClasses.Render
         public double _dx { get; set; }
         public double _dy { get; set; }
 
-        //public CalcCourse(double x1, double x2, double y1, double y2)
-        //{
-        //    _x1 = x1;
-        //    _x2 = x2;
-        //    _y1 = y1;
-        //    _y2 = y2;
 
-        //    _Angle = Calculate(_x1, _x2, _y1, _y2);
-        //}
-
-        public double Calculate(double x1, double x2, double y1, double y2)
+        public double Calculate(ITracks track1, ITracks track2)
         {
             double Rad2Deg = 180.0 / Math.PI;
-            double dx = x2 - x1;
-            double dy = y2 - y1;
+            double dx = track2.X - track1.X;
+            double dy = track2.Y - track1.Y;
             double angle = 90 - Math.Atan2(dy, dx) * Rad2Deg;
 
             if (angle <= 0)

@@ -1,7 +1,8 @@
-﻿using ATMClasses.Render;
+﻿using ATMClasses.Interfaces;
+using ATMClasses.Render;
 using ATMClasses.TrackUpdate;
 using NUnit.Framework;
-
+using NSubstitute;
 namespace ATM.Unit.Test
 {
     [TestFixture]
@@ -9,11 +10,14 @@ namespace ATM.Unit.Test
     {
         private CalcCourse _uut;
         private double _x1, _x2, _y1, _y2;
+        private ITracks _track1;
+        private ITracks _track2;
 
         [SetUp]
         public void Setup()
         {
-
+            _track1 = Substitute.For<ITracks>();
+            _track2 = Substitute.For<ITracks>();
             _uut = new CalcCourse();
         }
 
@@ -48,11 +52,12 @@ namespace ATM.Unit.Test
         [Test]
         public void HeadingEast()
         {
-            _x1 = 2;
-            _x2 = 2;
-            _y1 = 0;
-            _y2 = 0;
-            _uut.Calculate(_x1, _x2, _y1, _y2);
+            _track1.X = 2;
+            _track2.X = 2;
+            _track1.Y = 0;
+            _track2.Y = 0;
+
+            _uut.Calculate(_track1, _track2);
             Assert.AreEqual(_uut._Angle, 90);
 
         }
@@ -60,31 +65,31 @@ namespace ATM.Unit.Test
         [Test]
         public void HeadingWest()
         {
-            _x1 = 2;
-            _x2 = 1;
-            _y1 = 2;
-            _y2 = 2;
-            _uut.Calculate(_x1, _x2, _y1, _y2);
+            _track1.X = 2;
+            _track2.X = 1;
+            _track1.Y = 2;
+            _track2.Y = 2;
+            _uut.Calculate(_track1, _track2);
             Assert.AreEqual(_uut._Angle, 270);
         }
         [Test]
         public void HeadingSouth()
         {
-            _x1 = 2;
-            _x2 = 2;
-            _y1 = 2;
-            _y2 = 0;
-            _uut.Calculate(_x1, _x2, _y1, _y2);
+            _track1.X = 2;
+            _track2.X = 2;
+            _track1.Y = 2;
+            _track2.Y = 0;
+            _uut.Calculate(_track1, _track2);
             Assert.AreEqual(_uut._Angle, 180);
         }
         [Test]
         public void HeadingNorth()
         {
-            _x1 = 2;
-            _x2 = 2;
-            _y1 = 0;
-            _y2 = 2;
-            _uut.Calculate(_x1, _x2, _y1, _y2);
+            _track1.X = 2;
+            _track2.X = 2;
+            _track1.Y = 0;
+            _track2.Y = 2;
+            _uut.Calculate(_track1, _track2);
             Assert.AreEqual(_uut._Angle, 360);
         }
     }

@@ -15,7 +15,7 @@ namespace ATMClasses.Output
         public ICalcCourse CalcCourse { get; set; }
         public ILog Logger { get; set; }
         public ISeparation Separation { get; set; }
-
+        
         private IUpdate _Update;
         //public Print(IOutput output)
         //{
@@ -31,16 +31,23 @@ namespace ATMClasses.Output
             Separation = separation;
             _myOutput = output;
             Printing(tracks, monitor);
+            
         }
         public void Printing(List<ITracks> tracks, IMonitors monitor)
         {
             monitor.Track = tracks;
-            _Update.TrackCalculated(CalcDist, CalcCourse, CalcVel,Logger, Separation, tracks);
+            //Her bliver mest af updates klasser initialiseret
+            if (tracks.Count == 1)
+            {
+                _Update.TrackCalculated(CalcDist, CalcCourse, CalcVel, Logger, Separation, tracks);
+                
+            }
+
             foreach (var track in monitor.Track)
             {
                 //_Update.TrackCalculated(Velocity, tracks);
                 //Tilsat filtering
-                if (monitor.MonitorFlight(track))
+                //if (monitor.MonitorFlight(track))
                 {
                     _myOutput.OutputLine($"Tag: {track.Tag}");
                     _myOutput.OutputLine($"XCoord: {track.X}");
@@ -51,7 +58,7 @@ namespace ATMClasses.Output
                     _myOutput.OutputLine($"");
                     //System.Console.WriteLine(track);
                 }
-                else
+                //else
                 {
 
                 }

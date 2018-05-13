@@ -10,6 +10,7 @@ namespace ATMClasses.Interfaces
         ICalcVelocity Velocity { get; set; }
         ICalcCourse Course { get; set; }
         ICalcDistance Distance { get; set; }
+        List<ITracks> CompareList { get; set; }
 
         void TrackCalculated(ICalcDistance distance, ICalcCourse course, ICalcVelocity vel, ILog logger,
             ISeparation separation, List<ITracks> list);

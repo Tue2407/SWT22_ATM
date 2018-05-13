@@ -5,37 +5,41 @@ namespace ATMClasses.Render
 {
     public class CalcVelocity : ICalcVelocity
     {
-        public double Velocity(double x1, double x2, double y1, double y2, double time)
+        private double timespan;
+        public double Velocity(ITracks track1, ITracks track2)
         {
+            TimeSpan time = track2.Timestamp - track1.Timestamp;
+            timespan = (double)time.TotalSeconds;
+
             double a = 0, b = 0, speed = 0;
 
-            if (x1 > x2)
+            if (track1.X > track2.X)
             {
-                a = x1 - x2;
+                a = track1.X - track2.X;
             }
             else
             {
-                a = x2 - x1;
+                a = track2.X - track1.X;
             }
 
-            if (y1 > y2)
+            if (track1.Y > track2.Y)
             {
-                b = y1 - y2;
+                b = track1.Y - track2.Y;
             }
             else
             {
-                b = y2 - y1;
+                b = track2.Y - track1.Y;
             }
 
             double c = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
 
-            if (time < 0)
+            if (timespan < 0)
             {
-                time = time * -1;
-                speed = c / time;
+                timespan = timespan * -1;
+                speed = c / timespan;
             }
-            else if (time > 0)
-            { speed = c / time; }
+            else if (timespan > 0)
+            { speed = c / timespan; }
 
             return speed;
         }
