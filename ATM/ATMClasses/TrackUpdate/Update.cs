@@ -11,7 +11,7 @@ namespace ATMClasses.TrackUpdate
 {
     public class Update : IUpdate
     {
-        private double timespan;
+        public IMonitors Monitor { get; set; }
         public ILog Logger { get; set; }
         public ISeparation Separation { get; set; }
         public ICalcVelocity Velocity { get; set; }
@@ -20,8 +20,6 @@ namespace ATMClasses.TrackUpdate
         public List<ITracks> OldTracklist { get; set; }
         public List<ITracks> CurrentList { get; set; }
         public List<ITracks> CompareList { get; set; }
-
-        private int count = 0;
         
         public Update(ITrackDecoding arg)
         {
@@ -31,67 +29,27 @@ namespace ATMClasses.TrackUpdate
             arg.TrackDataReadyForCalculation += ArgOnTrackDataReadyForCalculation;
         }
 
-        //Vores update ligger her
+        //Vores filter og update sidder her, med separationseventet hvis tags ikke er det samme
         private void ArgOnTrackDataReadyForCalculation(object sender, TrackDataEventArgs trackDataEventArgs)
         {
-            //Kan gøres til en metode
+            
             if (OldTracklist.Count != 0)
             {
-                foreach (var track in trackDataEventArgs.TrackData)
-                {
-                    foreach (var oldtrack in OldTracklist)
-                    {
-
-                        if (track.Tag == oldtrack.Tag)
-                        {
-                            //Hastighed
-                            track.Velocity = Convert.ToInt32(Velocity.Velocity(oldtrack, track));
-
-                            //Kursen
-                            track.Course = Convert.ToInt32(Course.Calculate(oldtrack, track));
-                            count++;
-                            ////CurrentList.Add(track);
-                            Console.WriteLine($"ArgOnTrackDataReadyForCalculation: {track.Tag}");
-                            Console.WriteLine($"ArgOnTrackDataReadyForCalculation: X1: {oldtrack.X}, X2: {track.X}, Y1: {oldtrack.Y}, Y2: {track.Y}, Vel: {track.Velocity}, {track.Course}");
-                        }
-
-                        if (track.Tag != oldtrack.Tag)
-                        {
-                            if (Separation.CollisionDetection(Distance, track, oldtrack))
-                            {
-                                Logger.LogSeparationEvent(track, oldtrack);
-                            }
-                        }
-                        
-                    }
-                    ListRenew(trackDataEventArgs.TrackData);
-
-                    //OldTracklist.Clear();
-
-                    //foreach (var newtrack in trackDataEventArgs.TrackData)
-                    //{
-                    //    OldTracklist.Add(newtrack);
-                    //}
-                    
-                }
+                UpdatesTrack(trackDataEventArgs.TrackData);
             }
             else
             {
-                ListRenew(trackDataEventArgs.TrackData);
-                //foreach (var track in trackDataEventArgs.TrackData)
-                //{
-                //    OldTracklist.Clear();
-                //    OldTracklist.Add(track);
-                //}
+                ListInit(trackDataEventArgs.TrackData);
             }
-
+            ListRenew(trackDataEventArgs.TrackData);
         }
             
 
         //Skal initialisere Calc udefra plus tilføje alt til listen!
-        public void TrackCalculated(ICalcDistance distance ,ICalcCourse course, ICalcVelocity vel, ILog logger, ISeparation separation, List<ITracks> list)
+        public void TrackCalculated(IMonitors monitor,ICalcDistance distance ,ICalcCourse course, ICalcVelocity vel, ILog logger, ISeparation separation, List<ITracks> list)
         {
             //Initialisering af klasserne
+            Monitor = monitor;
             Distance = distance;
             Velocity = vel;
             Course = course;
@@ -99,24 +57,47 @@ namespace ATMClasses.TrackUpdate
             Separation = separation;
         }
         
+        public void ListInit(List<ITracks> list)
+        {
+            if(!OldTracklist.Any())
+            {
+                foreach (var Hans in list)
+                {
+                    OldTracklist.Add(Hans);
+                }
+            }
+            
+        }
+
         public void ListRenew(List<ITracks> list)
         {
-            OldTracklist.Clear();
+        OldTracklist.Clear();
             foreach (var Hans in list)
             {
                 OldTracklist.Add(Hans);
+            } 
+        }
+
+        public void UpdatesTrack(List<ITracks> list)
+        {
+            foreach (var newTrack in list)
+            {
+                foreach (var oldtrack in OldTracklist)
+                {
+                    if (Monitor.MonitorFlight(oldtrack))
+                    {
+                        if (oldtrack.Tag == newTrack.Tag)
+                        {
+                            //Console.WriteLine($"{newTrack.Tag}, X1: {oldtrack.X}, X2: {newTrack.X}");
+                            newTrack.Velocity = (int)Velocity.Velocity(oldtrack, newTrack);
+                            newTrack.Course = (int)Course.Calculate(oldtrack, newTrack);
+                            break;
+                        }
+                    }
+                }
             }
         }
 
-        public bool TrackMatchingTag(List<ITracks> list)
-        {
-            return true;
-        }
-
-        public void TrackVelocity(List<ITracks> list)
-        {
-
-        }
 
         public event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation;
     }

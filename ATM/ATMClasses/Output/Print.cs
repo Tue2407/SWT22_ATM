@@ -39,15 +39,14 @@ namespace ATMClasses.Output
             //Her bliver mest af updates klasser initialiseret
             if (tracks.Count == 1)
             {
-                _Update.TrackCalculated(CalcDist, CalcCourse, CalcVel, Logger, Separation, tracks);
-                
+                _Update.TrackCalculated(monitor,CalcDist, CalcCourse, CalcVel, Logger, Separation, tracks);   
             }
 
             foreach (var track in monitor.Track)
             {
-                //_Update.TrackCalculated(Velocity, tracks);
+                monitor.Track = tracks;
                 //Tilsat filtering
-                //if (monitor.MonitorFlight(track))
+                if (monitor.MonitorFlight(track))
                 {
                     _myOutput.OutputLine($"Tag: {track.Tag}");
                     _myOutput.OutputLine($"XCoord: {track.X}");
