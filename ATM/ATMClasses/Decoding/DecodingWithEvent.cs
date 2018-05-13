@@ -14,7 +14,7 @@ namespace ATMClasses.Decoding
     public class DecodingWithEvent : ITrackDecoding
     {
         private List<ITracks> trackList;
-        public event EventHandler<TrackDataEventArgs> TrackDataReady; //Eventet
+        //public event EventHandler<TrackDataEventArgs> TrackDataReady; //Eventet
         public event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation; //Eventet til to
 
         //Subscribe til handleren
@@ -38,18 +38,13 @@ namespace ATMClasses.Decoding
             //Hvis tracklisten har 1 track, skal nok laves om til 2 tracks
             if (trackList.Count != 0)
             {
-                var handler = TrackDataReady;
-                //Hvis at handler eventet har hævet flaget
-                handler?.Invoke(this, new TrackDataEventArgs(trackList));
-
-            }
-            if (trackList.Count != 0)
-            {
+                
                 var handler = TrackDataReadyForCalculation;
                 //Hvis at handler eventet har hævet flaget
                 handler?.Invoke(this, new TrackDataEventArgs(trackList));
 
             }
+            
         }
 
         public TrackData Convert(string data)

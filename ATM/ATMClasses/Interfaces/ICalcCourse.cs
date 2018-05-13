@@ -2,6 +2,6 @@
 {
     public interface ICalcCourse
     {
-        double Calculate(double x1, double x2, double y1, double y2);
+        double Calculate(ITracks track1, ITracks track2);
     }
 }

@@ -23,7 +23,7 @@ namespace ATMClasses.Interfaces
 
     public interface ITrackDecoding
     {
-        event EventHandler<TrackDataEventArgs> TrackDataReady;
+        //event EventHandler<TrackDataEventArgs> TrackDataReady;
         event EventHandler<TrackDataEventArgs> TrackDataReadyForCalculation;
     }
 }

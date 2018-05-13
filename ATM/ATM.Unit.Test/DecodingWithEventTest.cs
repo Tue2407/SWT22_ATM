@@ -34,7 +34,7 @@ namespace ATM.Unit.Test
             );
 
             // Make a fake subscriber to the event in UUT
-            _uut.TrackDataReady += (o, args) => receivedTrackData = args.TrackData;
+            _uut.TrackDataReadyForCalculation += (o, args) => receivedTrackData = args.TrackData;
 
         }
 
