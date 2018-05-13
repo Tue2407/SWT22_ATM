@@ -19,7 +19,7 @@ namespace ATM.Unit.Test
             _uut = new CalcDistance();
         }
 
-        // Test-case For fly der flyver i et 2D plan.
+        // Test-case For fly der flyver i et 1D plan.
 
         [TestCase(0, 0, 0)]
         [TestCase(19000, 0, 19000)]
@@ -36,7 +36,7 @@ namespace ATM.Unit.Test
         [TestCase(90000, -90000, 180000)]
         [TestCase(-90000, 90000, 180000)]
 
-        public void CalcDistance2D_returnsCorrect_Value(int first, int second, int result)
+        public void CalcDistance1D_returnsCorrect_Value(int first, int second, int result)
         {
             Assert.AreEqual(result, _uut.CalculateDistance1D(first, second));
         }
