@@ -93,6 +93,14 @@ namespace ATMClasses.TrackUpdate
                             newTrack.Course = (int)Course.Calculate(oldtrack, newTrack);
                             break;
                         }
+
+                        if (oldtrack.Tag != newTrack.Tag)
+                        {
+                            if (Separation.CollisionDetection(Distance, newTrack, oldtrack))
+                            {
+                                Logger.LogSeparationEvent(newTrack,oldtrack);
+                            }
+                        }
                     }
                 }
             }
