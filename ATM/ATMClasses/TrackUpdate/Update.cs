@@ -93,6 +93,7 @@ namespace ATMClasses.TrackUpdate
 
                         if (oldtrack.Tag != newTrack.Tag)
                         {
+
                             if (Separation.CollisionDetection(Distance, newTrack, oldtrack))
                             {
                                 Logger.LogSeparationEvent(newTrack,oldtrack);

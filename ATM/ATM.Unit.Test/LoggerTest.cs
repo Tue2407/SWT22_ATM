@@ -38,6 +38,8 @@ namespace ATM.Unit.Test
             {
             string[] lines = System.IO.File.ReadAllLines(@"SeparatationEventLog.txt");
 
+                //"Timestamp: 20151006213456789\tTag1 and Tag2 are breaking separation rules", lines[0] //Giver jenkins rigtigt
+                //Assert.AreEqual("Timestamp: 14-05-2018 17:18 53 1111\tTAG1 and TAG1 are breaking separation rules", lines[0]);
                 Assert.AreEqual("Timestamp: 20151006213456789\tTag1 and Tag2 are breaking separation rules", lines[0]);
             }
         }
