@@ -38,3 +38,4 @@ D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CoreCompileI
 D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CopyComplete
 D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.exe
 D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.pdb
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\obj\Debug\AppWithMethod.csprojResolveAssemblyReference.cache

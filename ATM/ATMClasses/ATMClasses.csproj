@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Data\TrackData.cs" />
     <Compile Include="Decoding\DecodingWithEvent.cs" />
+    <Compile Include="Decoding\DecodingWithMethod.cs" />
     <Compile Include="Filtering\Monitor.cs" />
     <Compile Include="Interfaces\ICalcCourse.cs" />
     <Compile Include="Interfaces\ICalcDistance.cs" />
