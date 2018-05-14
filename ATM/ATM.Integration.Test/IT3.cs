@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using ATMClasses;
@@ -146,6 +145,17 @@ namespace ATM.Integration.Test
 
         }
         [Test]
+        public void CalcVelocity_Receives_Correct_Tracks()
+        {
+            _calcVelocity = Substitute.For<ICalcVelocity>();
+            Action();
+            RaiseFakeEvent();
+            RaiseFakeEvent();
+            _uut.UpdatesTrack(_Tracklist);
+
+            _calcVelocity.Received().Velocity(_Track1, _Track2);
+        }
+        [Test]
         public void CalcCourse_Calcs_If_Monitor_Is_True_Through_Update()
         {
 
@@ -160,6 +170,18 @@ namespace ATM.Integration.Test
 
             //Check om den får true
             Assert.That(_Tracklist[1].Course,Is.EqualTo(270));
+        }
+
+        [Test]
+        public void CalcCourse_Receives_Correct_Tracks()
+        {
+            _calcCourse = Substitute.For<ICalcCourse>();
+            Action();
+            RaiseFakeEvent();
+            RaiseFakeEvent();
+            _uut.UpdatesTrack(_Tracklist);
+            
+            _calcCourse.Received().Calculate(_Track1, _Track2);
         }
 
         [Test]
