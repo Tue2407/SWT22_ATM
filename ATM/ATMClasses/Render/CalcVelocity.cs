@@ -5,7 +5,7 @@ namespace ATMClasses.Render
 {
     public class CalcVelocity : ICalcVelocity
     {
-        private double timespan;
+        public double timespan { get; set; }
         public double Velocity(ITracks track1, ITracks track2)
         {
             TimeSpan time = track2.Timestamp - track1.Timestamp;

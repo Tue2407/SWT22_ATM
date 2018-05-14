@@ -43,7 +43,6 @@ C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\bin\Debug\ATMClass
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\bin\Debug\nunit.framework.pdb
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\bin\Debug\nunit.framework.xml
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.csprojResolveAssemblyReference.cache
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.csproj.CoreCompileInputs.cache
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.dll
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.pdb

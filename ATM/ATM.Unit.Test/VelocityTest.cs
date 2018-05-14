@@ -104,5 +104,14 @@ namespace ATM.Unit.Test
             double result = Convert.ToInt32(_uut.Velocity(tracklist[0], tracklist[1]));
             Assert.AreNotEqual(result.ToString(), r);
         }
+
+        [Test]
+        public void Check_If_It_Returns_A_Double()
+        {
+            Action(1,2,3,4);
+            double control = _uut.Velocity(tracklist[0], tracklist[1]);
+            Assert.AreEqual(control, 2357022.6039551585d);
+        }
+
     }
 }
