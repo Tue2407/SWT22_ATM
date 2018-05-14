@@ -113,5 +113,14 @@ namespace ATM.Unit.Test
             Assert.AreEqual(control, 2357022.6039551585d);
         }
 
+        [Test]
+        public void If_TimeSpan_Is_Less_Than_Zero()
+        {
+            Action(1, 2, 3, 4);
+            _uut.timespan = -45;
+            double control = _uut.Velocity(tracklist[1], tracklist[0]);
+            Assert.AreEqual(control, 2357022.6039551585d);
+        }
+
     }
 }

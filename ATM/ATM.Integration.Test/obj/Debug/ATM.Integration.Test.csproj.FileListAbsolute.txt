@@ -46,3 +46,4 @@ C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\bin\Debug\System.T
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.csproj.CoreCompileInputs.cache
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.dll
 C:\Users\DPH\Source\Repos\SWT22_ATM2\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.pdb
+C:\Users\DPH\source\repos\SWT22_ATM2\ATM\ATM.Integration.Test\obj\Debug\ATM.Integration.Test.csprojResolveAssemblyReference.cache
