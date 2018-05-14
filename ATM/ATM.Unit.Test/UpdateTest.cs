@@ -153,6 +153,7 @@ namespace ATM.Unit.Test
             _fakeTransponderData.TrackData.Clear();
             _fakeTransponderData.TrackData.Add(_track1);
             RaiseFakeEvent();
+
             Assert.That(receivedTrackData[0].Tag, Is.EqualTo("Tag1"));
         }
         [Test]
@@ -188,6 +189,7 @@ namespace ATM.Unit.Test
 
             _monitor.MonitorFlight(receivedTrackData[0]).Returns(true);
             _calcVelocity.Velocity(_track1, _track2).Returns(200);
+            RaiseFakeEvent();
             //_monitor.MonitorFlight(receivedTrackData[1]).Returns(true);
             _uut.UpdatesTrack(receivedTrackData);
             
@@ -205,7 +207,7 @@ namespace ATM.Unit.Test
             RaiseFakeEvent();
             //Monitor bliver ok
             _monitor.MonitorFlight(receivedTrackData[0]).Returns(true);
-
+            RaiseFakeEvent();
             //Kursen bliver udregnet
             _calcCourse.Calculate(_track1, _track2).Returns(95);
             _uut.UpdatesTrack(receivedTrackData);
@@ -223,9 +225,9 @@ namespace ATM.Unit.Test
             RaiseFakeEvent();
             //Monitor bliver ok
             _monitor.MonitorFlight(receivedTrackData[0]).Returns(true);
-
+            RaiseFakeEvent();
             //Kursen bliver udregnet
-            
+
             _uut.UpdatesTrack(receivedTrackData);
 
            
@@ -246,6 +248,7 @@ namespace ATM.Unit.Test
             _fakeTransponderData.TrackData.Clear();
             _fakeTransponderData.TrackData.Add(_track1);
             _fakeTransponderData.TrackData.Add(_track2);
+            RaiseFakeEvent();
             RaiseFakeEvent();
             //Monitor bliver ok
             _monitor.MonitorFlight(receivedTrackData[0]).Returns(true);

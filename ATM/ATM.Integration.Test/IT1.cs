@@ -86,6 +86,7 @@ namespace ATM.Integration.Test
             //Man hæver eventet og logger bliver gjort her
             Action(); //Logger og Tracks bliver initialiseret og sat her
             RaiseFakeEvent(); //Eventet sker
+            RaiseFakeEvent(); //Eventet sker
 
             using (var stream = new MemoryStream())
             using (var writer = new StreamWriter(stream))

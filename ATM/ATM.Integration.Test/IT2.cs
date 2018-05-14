@@ -90,7 +90,7 @@ namespace ATM.Integration.Test
             //Hæv og init _uut, _CalcDistance, _Track1, _Track2
             Action();
             RaiseFakeEvent(); //Den går igennem Update.TrackUpdate, ser 2 forskellige tags og undersøger den her.
-
+            RaiseFakeEvent(); //Den går igennem Update.TrackUpdate, ser 2 forskellige tags og undersøger den her.
             //Check om _uut faktisk bliver true med de tracks den "looper" igennem.
             Assert.That(_uut.CollisionDetection(_CalcDistance,_Track1,_Track2),Is.EqualTo(true));
             _monitor.MonitorFlight(_Track1).Returns(true);
@@ -105,7 +105,7 @@ namespace ATM.Integration.Test
             //Hæv og init _uut, _CalcDistance, _Track1, _Track2
             Action();
             RaiseFakeEvent(); //Den går igennem Update.TrackUpdate, ser 2 forskellige tags og undersøger den her.
-
+            RaiseFakeEvent(); //Den går igennem Update.TrackUpdate, ser 2 forskellige tags og undersøger den her.
             Assert.That(_Track1.Velocity,Is.EqualTo(23));
             _monitor.MonitorFlight(_Track1).Returns(true);
 
@@ -122,7 +122,7 @@ namespace ATM.Integration.Test
             _Track1.X = 45000;
             
             RaiseFakeEvent(); //Den går igennem Update.TrackUpdate, ser 2 forskellige tags og undersøger den her.
-
+            RaiseFakeEvent(); //Den går igennem Update.TrackUpdate, ser 2 forskellige tags og undersøger den her.
             //Vi checker lige om det kan mon passe at den skal give false
             Assert.That(_uut.CollisionDetection(_CalcDistance,_Track1,_Track2),Is.EqualTo(false));
             //Den opdatere stadigvæk hastigheden selvom de ikke er de samme

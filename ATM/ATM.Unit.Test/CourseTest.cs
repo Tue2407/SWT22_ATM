@@ -52,10 +52,10 @@ namespace ATM.Unit.Test
         [Test]
         public void HeadingEast()
         {
-            _track1.X = 2;
-            _track2.X = 2;
-            _track1.Y = 0;
-            _track2.Y = 0;
+            _track1.X = 20000;
+            _track2.X = 20000;
+            _track1.Y = 10000;
+            _track2.Y = 10000;
 
             _uut.Calculate(_track1, _track2);
             Assert.AreEqual(_uut._Angle, 90);
@@ -65,10 +65,10 @@ namespace ATM.Unit.Test
         [Test]
         public void HeadingWest()
         {
-            _track1.X = 2;
-            _track2.X = 1;
-            _track1.Y = 2;
-            _track2.Y = 2;
+            _track1.X = 200000;
+            _track2.X = 100000;
+            _track1.Y = 200000;
+            _track2.Y = 200000;
             _uut.Calculate(_track1, _track2);
             Assert.AreEqual(_uut._Angle, 270);
         }
