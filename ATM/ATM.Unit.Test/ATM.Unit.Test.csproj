@@ -63,6 +63,7 @@
     <Compile Include="DecodingWithEventTest.cs" />
     <Compile Include="DecodingWithMethodTest.cs" />
     <Compile Include="DistanceTest.cs" />
+    <Compile Include="LoggerTest.cs" />
     <Compile Include="MonitorTest.cs" />
     <Compile Include="OutputTest.cs" />
     <Compile Include="PrintTest.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="TrackDataTest.cs" />
     <Compile Include="UpdateTest.cs" />
     <Compile Include="VelocityTest.cs" />
+    <Compile Include="´SeparationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ATMClasses\ATMClasses.csproj">

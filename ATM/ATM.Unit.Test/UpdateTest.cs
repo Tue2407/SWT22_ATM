@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using ATMClasses.Data;
 using ATMClasses.Decoding;
+using ATMClasses.Filtering;
 using ATMClasses.Interfaces;
 using ATMClasses.Render;
 using ATMClasses.TrackUpdate;
 using NUnit.Framework;
 using NSubstitute;
+using NSubstitute.Extensions;
 using TransponderReceiver;
 
 namespace ATM.Unit.Test
@@ -38,14 +41,15 @@ namespace ATM.Unit.Test
             _calcVelocity = Substitute.For<ICalcVelocity>();
             _logger = Substitute.For<ILog>();
             _separation = Substitute.For<ISeparation>();
-            
+            _monitor = Substitute.For<IMonitors>();
+
             //Tilsæt ny data
             _track1.Tag = "Tag1";
             _track1.Altitude = 500;
             _track1.X = 20000;
             _track1.Y = 40000;
             //_track1.Course = 0;
-            _track1.Timestamp = DateTime.Now;
+            _track1.Timestamp = new DateTime(20180419152929150);
             //_track1.Velocity = 0;
 
             _track2.Tag = "Tag1";
@@ -53,7 +57,7 @@ namespace ATM.Unit.Test
             _track2.X = 40000;
             _track2.Y = 90000;
             //_track2.Course = 0;
-            _track2.Timestamp = DateTime.Now;
+            _track2.Timestamp = new DateTime(20180419152929100);
             //_track2.Velocity = 0;
 
             _fakeTransponderData = new TrackDataEventArgs(new List<ITracks>());
@@ -65,10 +69,11 @@ namespace ATM.Unit.Test
 
         private void RaiseFakeEvent()
         {
+            _uut.TrackCalculated(_monitor, _calcDistance, _calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
             
-             // Hæv eventet hvis _decoder har fået hævet flaget, indsæt den falske liste
-             _decoder.TrackDataReadyForCalculation += Raise.EventWith(_fakeTransponderData);
-           
+            // Hæv eventet hvis _decoder har fået hævet flaget, indsæt den falske liste
+            _decoder.TrackDataReadyForCalculation += Raise.EventWith(_fakeTransponderData);
+            
         }
 
         [Test]
@@ -153,38 +158,104 @@ namespace ATM.Unit.Test
         [Test]
         public void Two_Correct_Track_Output()
         {
-            //_fakeTransponderData.TrackData.Clear();
-            //_fakeTransponderData.TrackData.Add(_track1);
-            ////Den bliver added og eventet affyres
-            //RaiseFakeEvent();
+            _track2.Tag = "Tag2";
+            _track1.X = 9000;
+            _track1.Y = 9000;
+            _track1.Altitude = 9000;
+            _fakeTransponderData.TrackData.Clear();
+            _fakeTransponderData.TrackData.Add(_track1);
+            //Den bliver added og eventet affyres
+            RaiseFakeEvent();
 
-            ////Den affyrer og så kommer Update fra print og initialisere alt i systemet første gang.
-            //_uut.TrackCalculated(_monitor, _calcDistance, _calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
-            ////_fakeTransponderData.TrackData.Add(_track2);
-            ////Bliver beregnet her anden gang
-            //_fakeTransponderData.TrackData.Add(_track2);
-            //RaiseFakeEvent();
-            //_calcVelocity.Velocity(_track1, _track2).Returns(10);
+            //Den affyrer og så kommer Update fra print og initialisere alt i systemet første gang.
+            _uut.TrackCalculated(_monitor, _calcDistance, _calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
+            _fakeTransponderData.TrackData.Add(_track2);
 
-            //RaiseFakeEvent();
-            ////_uut.TrackCalculated(_calcDistance, _calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
-
-
-            ////Assert.That(receivedTrackData[0].Tag, Is.EqualTo("Tag1"));
-            ////Assert.That(receivedTrackData[1].Tag, Is.EqualTo("Tag1"));
-            //Assert.That(receivedTrackData[1].Tag, Is.EqualTo("Tag1"));
+            //Den bliver added og eventet affyres
+            RaiseFakeEvent();
+            
+            Assert.That(receivedTrackData[0].Tag,Is.EqualTo("Tag1"));
+            Assert.That(receivedTrackData[1].Tag, Is.EqualTo("Tag2"));
         }
 
-        //[TestCase(1000, 30000, 1000, 2000)]
-        //public void Calculated_Course_On_Track(int x1, int x2, int y1, int y2)
-        //{
-        //    RaiseFakeEvent();
+        [Test]
+        public void Two_Same_Tag_Calculate_Velocity()
+        {
+            _fakeTransponderData.TrackData.Clear();
+            _fakeTransponderData.TrackData.Add(_track1);
+            _fakeTransponderData.TrackData.Add(_track2);
+            RaiseFakeEvent();
 
-        //    //_uut.TrackCalculated(_calcCourse, _calcVelocity, _logger, _separation, receivedTrackData);
-        //    double control = _uut.Course.Calculate(x1, x2, y1, y2);
+            _monitor.MonitorFlight(receivedTrackData[0]).Returns(true);
+            _calcVelocity.Velocity(_track1, _track2).Returns(200);
+            //_monitor.MonitorFlight(receivedTrackData[1]).Returns(true);
+            _uut.UpdatesTrack(receivedTrackData);
+            
+            Assert.That(receivedTrackData[1].Velocity, Is.EqualTo(200));
+        }
 
-        //    Assert.AreEqual(control, receivedTrackData[0].Course);
-        //}
 
+        [Test]
+        public void Two_Same_Tag_Calculate_Course()
+        {
+            //Fylder listen op
+            _fakeTransponderData.TrackData.Clear();
+            _fakeTransponderData.TrackData.Add(_track1);
+            _fakeTransponderData.TrackData.Add(_track2);
+            RaiseFakeEvent();
+            //Monitor bliver ok
+            _monitor.MonitorFlight(receivedTrackData[0]).Returns(true);
+
+            //Kursen bliver udregnet
+            _calcCourse.Calculate(_track1, _track2).Returns(95);
+            _uut.UpdatesTrack(receivedTrackData);
+
+            Assert.That(receivedTrackData[1].Course, Is.EqualTo(95));
+        }
+        [Test]
+        public void Two_Different_Tag_SeparationBool_False()
+        {
+            _track2.Tag = "Tag2";
+            //Fylder listen op
+            _fakeTransponderData.TrackData.Clear();
+            _fakeTransponderData.TrackData.Add(_track1);
+            _fakeTransponderData.TrackData.Add(_track2);
+            RaiseFakeEvent();
+            //Monitor bliver ok
+            _monitor.MonitorFlight(receivedTrackData[0]).Returns(true);
+
+            //Kursen bliver udregnet
+            
+            _uut.UpdatesTrack(receivedTrackData);
+
+           
+            Assert.That(_uut.Separation.CollisionDetection(_calcDistance, _track1, _track2),Is.EqualTo(false));
+
+        }
+        [Test]
+        public void Two_Different_Tag_SeparationBool_True_With_Logger()
+        {
+            _track2.Tag = "Tag2";
+            _track2.X = 9000;
+            _track2.Y = 9000;
+
+            _track1.X = 9000;
+            _track1.Y = 9000;
+            
+            //Fylder listen op
+            _fakeTransponderData.TrackData.Clear();
+            _fakeTransponderData.TrackData.Add(_track1);
+            _fakeTransponderData.TrackData.Add(_track2);
+            RaiseFakeEvent();
+            //Monitor bliver ok
+            _monitor.MonitorFlight(receivedTrackData[0]).Returns(true);
+
+            //Kursen bliver udregnet
+            _separation.CollisionDetection(_calcDistance, _track1, _track2).ReturnsForAnyArgs(true);
+            _logger.LogSeparationEvent(_track1,_track2);
+            _uut.UpdatesTrack(receivedTrackData);
+            
+            _logger.Received().LogSeparationEvent(_track1,_track2);
+        }
     }
 }
