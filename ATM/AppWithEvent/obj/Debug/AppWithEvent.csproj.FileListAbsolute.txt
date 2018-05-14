@@ -38,3 +38,14 @@ D:\Skole\SWTHandin\ATM\AppWithEvent\obj\Debug\AppWithEvent.csproj.CoreCompileInp
 D:\Skole\SWTHandin\ATM\AppWithEvent\obj\Debug\AppWithEvent.csproj.CopyComplete
 D:\Skole\SWTHandin\ATM\AppWithEvent\obj\Debug\AppWithEvent.exe
 D:\Skole\SWTHandin\ATM\AppWithEvent\obj\Debug\AppWithEvent.pdb
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\bin\Debug\AppWithEvent.exe.config
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\bin\Debug\AppWithEvent.exe
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\bin\Debug\AppWithEvent.pdb
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\bin\Debug\ATMClasses.dll
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\bin\Debug\TransponderReceiver.dll
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\bin\Debug\ATMClasses.pdb
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\obj\Debug\AppWithEvent.csprojResolveAssemblyReference.cache
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\obj\Debug\AppWithEvent.csproj.CoreCompileInputs.cache
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\obj\Debug\AppWithEvent.csproj.CopyComplete
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\obj\Debug\AppWithEvent.exe
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithEvent\obj\Debug\AppWithEvent.pdb

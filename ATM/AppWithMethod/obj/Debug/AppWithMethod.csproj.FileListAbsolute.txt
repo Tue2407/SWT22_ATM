@@ -39,3 +39,14 @@ D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CopyComplete
 D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.exe
 D:\Skole\SWTHandin\ATM\AppWithMethod\obj\Debug\AppWithMethod.pdb
 C:\Users\DPH\source\repos\SWT22_ATM2\ATM\AppWithMethod\obj\Debug\AppWithMethod.csprojResolveAssemblyReference.cache
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\bin\Debug\AppWithMethod.exe.config
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\bin\Debug\AppWithMethod.exe
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\bin\Debug\AppWithMethod.pdb
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\bin\Debug\ATMClasses.dll
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\bin\Debug\TransponderReceiver.dll
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\bin\Debug\ATMClasses.pdb
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.csprojResolveAssemblyReference.cache
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CoreCompileInputs.cache
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.csproj.CopyComplete
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.exe
+D:\Skole\TuesSWT\SWT22_ATM\ATM\AppWithMethod\obj\Debug\AppWithMethod.pdb

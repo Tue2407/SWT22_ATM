@@ -34,3 +34,11 @@ C:\Users\the_t\source\repos\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.csproj
 C:\Users\the_t\source\repos\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.csproj.CopyComplete
 C:\Users\the_t\source\repos\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.dll
 C:\Users\the_t\source\repos\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.pdb
+D:\Skole\TuesSWT\SWT22_ATM\ATM\ATMClasses\bin\Debug\ATMClasses.dll
+D:\Skole\TuesSWT\SWT22_ATM\ATM\ATMClasses\bin\Debug\ATMClasses.pdb
+D:\Skole\TuesSWT\SWT22_ATM\ATM\ATMClasses\bin\Debug\TransponderReceiver.dll
+D:\Skole\TuesSWT\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.csprojResolveAssemblyReference.cache
+D:\Skole\TuesSWT\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.csproj.CoreCompileInputs.cache
+D:\Skole\TuesSWT\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.csproj.CopyComplete
+D:\Skole\TuesSWT\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.dll
+D:\Skole\TuesSWT\SWT22_ATM\ATM\ATMClasses\obj\Debug\ATMClasses.pdb
