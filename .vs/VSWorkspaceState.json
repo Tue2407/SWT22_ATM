@@ -5,10 +5,11 @@
     "\\ATM\\AppWithEvent",
     "\\ATM\\AppWithEvent\\bin",
     "\\ATM\\AppWithEvent\\bin\\Debug",
+    "\\ATM\\ATM.Integration.Test",
     "\\ATM\\ATMClasses",
     "\\ATM\\ATMClasses\\Proximity Detection",
     "\\ATM\\ATMClasses\\TrackUpdate"
   ],
-  "SelectedNode": "\\ATM\\AppWithEvent\\bin\\Debug\\TransponderReceiver.dll",
+  "SelectedNode": "\\ATM\\ATM.Integration.Test\\IT1.cs",
   "PreviewInSolutionExplorer": false
 }

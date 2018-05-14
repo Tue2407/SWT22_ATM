@@ -23,6 +23,7 @@ namespace ATM.Integration.Test
         public void SetUp()
         {
             //SetUp
+            Assert.AreEqual(2+2,4);
         }
 
         [Test]
